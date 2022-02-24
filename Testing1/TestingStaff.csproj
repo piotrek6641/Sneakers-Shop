@@ -50,7 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="tstStaff.cs" />
+    <Compile Include="tstStuff.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
