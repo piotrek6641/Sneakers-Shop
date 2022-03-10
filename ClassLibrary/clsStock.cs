@@ -67,12 +67,24 @@ namespace ClassLibrary
 
         public bool Find(int SneakerNo)
         {
-            mSneakerNo = 21;
-            mDateAdded = Convert.ToDateTime("16/9/2015");
-            mAvailable = true;
-            mPrice = 100;
-            mSneakerName = "Air Jordan 1";
-            return true;
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@SneakerNo", SneakerNo);
+            DB.Execute("sproc_tblStock_FilterBySneakerNo");
+
+            if(DB.Count == 1)
+            {
+                mSneakerNo = Convert.ToInt32(DB.DataTable.Rows[0]["SneakerNo"]);
+                mSneakerName = Convert.ToString(DB.DataTable.Rows[0]["SneakerName"]);
+                mPrice = Convert.ToInt32(DB.DataTable.Rows[0]["Price"]);
+                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["DateAdded"]);
+                mAvailable = Convert.ToBoolean(DB.DataTable.Rows[0]["Available"]);
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

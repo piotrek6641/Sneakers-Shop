@@ -77,9 +77,9 @@ namespace Testing3
             clsStock AStock = new clsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 SneakerNo = 21;
+            Int32 SneakerNo = 3;
             Found = AStock.Find(SneakerNo);
-            if(AStock.SneakerNo != 21)
+            if(AStock.SneakerNo != 3)
             {
                 OK = false;
             }
@@ -92,9 +92,9 @@ namespace Testing3
             clsStock AStock = new clsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 SneakerNo = 21;
+            Int32 SneakerNo = 3;
             Found = AStock.Find(SneakerNo);
-            if (AStock.DateAdded != Convert.ToDateTime("16/09/2015"))
+            if (AStock.DateAdded != Convert.ToDateTime("06-02-2022"))
             {
                 OK = false;
             }
@@ -107,7 +107,7 @@ namespace Testing3
             clsStock AStock = new clsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 SneakerNo = 21;
+            Int32 SneakerNo = 3;
             Found = AStock.Find(SneakerNo);
             if (AStock.Available != true)
             {
@@ -122,7 +122,7 @@ namespace Testing3
             clsStock AStock = new clsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 SneakerNo = 21;
+            Int32 SneakerNo = 3;
             Found = AStock.Find(SneakerNo);
             if (AStock.Price != 100)
             {
@@ -137,9 +137,9 @@ namespace Testing3
             clsStock AStock = new clsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 SneakerNo = 21;
+            Int32 SneakerNo = 3;
             Found = AStock.Find(SneakerNo);
-            if (AStock.SneakerName != "Air Jordan 1")
+            if (AStock.SneakerName != "Smthn")
             {
                 OK = false;
             }
