@@ -14,7 +14,8 @@ namespace Testing3
             Assert.IsNotNull(AStock);
         }
 
-        public void AvailablePropertyOK()
+        [TestMethod]
+        public void AvailableSneakerOK()
         {
             clsStock AStock = new clsStock();
             Boolean TestData = true;
@@ -22,6 +23,7 @@ namespace Testing3
             Assert.AreEqual(AStock.Available, TestData);
         }
 
+        [TestMethod]
         public void DateAddedOK()
         {
             clsStock AStock = new clsStock();
@@ -30,6 +32,7 @@ namespace Testing3
             Assert.AreEqual(AStock.DateAdded, TestData);
         }
 
+        [TestMethod]
         public void SneakerNamePropertyOK()
         {
             clsStock AStock = new clsStock();
@@ -38,6 +41,7 @@ namespace Testing3
             Assert.AreEqual(AStock.SneakerName, TestData);
         }
 
+        [TestMethod]
         public void SneakerNoPropertyOK()
         {
             clsStock AStock = new clsStock();
@@ -46,12 +50,100 @@ namespace Testing3
             Assert.AreEqual(AStock.SneakerNo, TestData);
         }
 
+        [TestMethod]
         public void PricePropertyOK()
         {
             clsStock AStock = new clsStock();
             Int32 TestData = 60;
             AStock.Price = TestData;
             Assert.AreEqual(AStock.Price, TestData);
+        }
+
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            clsStock AStock = new clsStock();
+            Boolean Found = false;
+            Int32 SneakerNo = 3;
+
+            Found = AStock.Find(SneakerNo);
+
+            Assert.IsTrue(Found);
+        }
+
+        [TestMethod]
+        public void TestAddressNoFound()
+        {
+            clsStock AStock = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 SneakerNo = 21;
+            Found = AStock.Find(SneakerNo);
+            if(AStock.SneakerNo != 21)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestDateAddedFound()
+        {
+            clsStock AStock = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 SneakerNo = 21;
+            Found = AStock.Find(SneakerNo);
+            if (AStock.DateAdded != Convert.ToDateTime("16/09/2015"))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestAvailableFound()
+        {
+            clsStock AStock = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 SneakerNo = 21;
+            Found = AStock.Find(SneakerNo);
+            if (AStock.Available != true)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestPriceFound()
+        {
+            clsStock AStock = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 SneakerNo = 21;
+            Found = AStock.Find(SneakerNo);
+            if (AStock.Price != 100)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestSneakerNameFound()
+        {
+            clsStock AStock = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 SneakerNo = 21;
+            Found = AStock.Find(SneakerNo);
+            if (AStock.SneakerName != "Air Jordan 1")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
         }
     }
 }
