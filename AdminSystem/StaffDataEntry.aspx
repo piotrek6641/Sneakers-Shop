@@ -9,18 +9,24 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:Label ID="StaffID" runat="server" Text="StaffID"></asp:Label>
+            <asp:Label ID="StaffID" runat="server" Text="StaffID" width="122px"></asp:Label>
             <asp:TextBox ID="TextStaffID" runat="server"></asp:TextBox>
-            <asp:Label ID="StaffEmail" runat="server" Text="Email"></asp:Label>
+            <br />
+            <asp:Label ID="StaffEmail" runat="server" Text="Email" width="122px"></asp:Label>
             <asp:TextBox ID="TextStaffEmail" runat="server"></asp:TextBox>
-            <asp:Label ID="StaffPassword" runat="server" Text="Password"></asp:Label>
+            <br />
+            <asp:Label ID="StaffPassword" runat="server" Text="Password" width="122px"></asp:Label>
             <asp:TextBox ID="TextStaffPassword" runat="server"></asp:TextBox>
+            <br />
             <asp:Label ID="StaffDateCreated" runat="server" Text="DateCreated"></asp:Label>
             <asp:TextBox ID="TextDateCreated" runat="server"></asp:TextBox>
-             <asp:Label ID="StaffIsAdmin" runat="server" Text="IsAdmin"></asp:Label>
-            <asp:CheckBox ID="CheckBox1" runat="server"/>
-            <asp:Label ID="lblError" runat="server" Text="lblError"></asp:Label>
-            <asp:Button ID="StaffOK" runat="server" Text="OK" />
+            <br />
+             
+            <asp:CheckBox ID="IsAdmin" runat="server" Text="IsAdmin" />
+            <br />
+            <br />
+            
+            <asp:Button ID="StaffOK" runat="server" Text="OK" OnClick="StaffOK_Click" />
             <asp:Button ID="StaffCancel" runat="server" Text="Cancel" />
         </div>
     </form>
