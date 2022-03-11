@@ -19,7 +19,7 @@ public partial class _1Viewer : System.Web.UI.Page
         //display the data for this entry
         Response.Write(AnOrder.OrderId);
         Response.Write(AnOrder.CustomerId);
-        //Response.Write(AnOrder.Statues);
+        Response.Write(AnOrder.Statues);
         Response.Write(AnOrder.DateAdded);
         Response.Write(AnOrder.StaffId);
     }

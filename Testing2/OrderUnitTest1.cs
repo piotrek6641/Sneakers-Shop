@@ -61,7 +61,7 @@ namespace Testing2
             Assert.AreEqual(AnOrder.CustomerId, TestData);
         }
 
-        [TestMethod] 
+        [TestMethod]
         public void StatuesPropertyOK()
         {
             clsOrder AnOrder = new clsOrder();
@@ -78,6 +78,46 @@ namespace Testing2
             AnOrder.StaffId = TestData;
             Assert.AreEqual(AnOrder.StaffId, TestData);
 
+        }
+
+
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            //create an instance of the class we want to create 
+            clsOrder AnOrder = new clsOrder();
+            //Bollean variable to store the results of the validation
+            Boolean Found = false;
+            //create some test data to use with the method
+            Int32 OrderId = 4;
+            //invoke the method
+            Found = AnOrder.Find(OrderId);
+            //test to see if the result is true
+            Assert.IsTrue(Found);
+        }
+
+        [TestMethod]
+        public void TestOrderNoFound()
+        {
+            // create an instance of the class we want create
+            clsOrder AnOrder = new clsOrder();
+            //boolean variable to store the result of the search
+            Boolean Found = false;
+            //boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            System.Int32 OrderId = 4;
+            //invoke method
+            Found = AnOrder.Find(OrderId);
+            // check the adress no
+            if (AnOrder.OrderId != 4)
+            {
+
+                OK = false;
+
+            }
+            //tst to see that the result is correct
+            Assert.IsTrue(OK);
         }
     }
 }

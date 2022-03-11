@@ -21,7 +21,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         // capturing the rest of the attributes
         AnOrder.CustomerId = Int32.Parse(txtCustomerId.Text);
-        //AnOrder.Statues = Int32.Parse(txtOrderStatues.Text);
+        AnOrder.Statues = Byte.Parse(txtOrderStatues.Text);
         AnOrder.DateAdded = DateTime.Parse(txtOrderDate.Text);
         AnOrder.StaffId = Int32.Parse(txtStaffId.Text);
 
