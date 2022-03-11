@@ -32,4 +32,23 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //navigate to the viewer page
         Response.Redirect("StockViewer.aspx");
     }
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        clsStock AStock = new clsStock();
+        Int32 SneakerNo;
+        //variable to store the result of the find operation
+        Boolean Found = false;
+        
+        SneakerNo = Convert.ToInt32(txtSneakerNo.Text);
+        Found = AStock.Find(SneakerNo);
+
+        if(Found == true)
+        {
+            txtSneakerName.Text = AStock.SneakerName;
+            txtPrice.Text = AStock.Price.ToString();
+            txtDateAdded.Text = AStock.DateAdded.ToString();
+            //chkAvailable
+        }
+    }
 }
