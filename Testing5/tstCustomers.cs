@@ -61,6 +61,105 @@ namespace Testing5
 			AnCustomers.Phone = TestData;
 			Assert.AreEqual(AnCustomers.Phone, TestData);
 		}
+		[TestMethod]
+		public void FindCustomerid()
+		{
+			clsCustomers AnCustomers = new clsCustomers();
+			Boolean Found = false;
+			Int32 Customerid = 2;
+			Found = AnCustomers.Find(Customerid);
+			Assert.IsTrue(Found);
+		}
+		[TestMethod]
+		public void FindCustomeridnotfound()
+		{
+			clsCustomers AnCustomers = new clsCustomers();
+			Boolean Found = false;
+			Boolean OK = true;
+			Int32 Customerid = 2;
+			Found = AnCustomers.Find(Customerid);
+			if (AnCustomers.Customerid != 2)
+			{
+				OK = false;
+			
+			}
+			Assert.IsTrue(OK);
+		}
+		[TestMethod]
+		public void FindCustomeremail()
+		{
+			clsCustomers AnCustomers = new clsCustomers();
+			Boolean Found = false;
+			String Customer_email = "norb@gmail.com";
+			Found = AnCustomers.Find(Customer_email);
+			Assert.IsTrue(Found);
+		}
+		[TestMethod]
+		public void FindCustomeremailnotfound()
+		{
+			clsCustomers AnCustomers = new clsCustomers();
+			Boolean Found = false;
+			Boolean OK = true;
+			String Customer_email = "norb@gmail.com";
+			Found = AnCustomers.Find(Customer_email);
+			if (AnCustomers.Customer_email != "norb@gmail.com")
+			{
+				OK = false;
+
+			}
+			Assert.IsTrue(OK);
+		}
+		[TestMethod]
+		public void Findaddress()
+		{
+			clsCustomers AnCustomers = new clsCustomers();
+			Boolean Found = false;
+			String Address = "Leicester le27df jarrom street 44";
+            Found = AnCustomers.Find(Address);
+			Assert.IsTrue(Found);
+		}
+		[TestMethod]
+		public void Findaddressnotfound()
+		{
+			clsCustomers AnCustomers = new clsCustomers();
+			Boolean Found = false;
+			Boolean OK = true;
+			String Address = "Leicester le27df jarrom street 44";
+			Found = AnCustomers.Find(Address);
+			if (AnCustomers.Address != "Leicester le27df jarrom street 44")
+			{
+				OK = false;
+
+			}
+			Assert.IsTrue(OK);
+		}
+		[TestMethod]
+		public void Findphone()
+		{
+			clsCustomers AnCustomers = new clsCustomers();
+			Boolean Found = false;
+			String Phone = "07332986400";
+			Found = AnCustomers.Find(Phone);
+			Assert.IsTrue(Found);
+		}
+		[TestMethod]
+		public void Findphonenotfound()
+		{
+			clsCustomers AnCustomers = new clsCustomers();
+			Boolean Found = false;
+			Boolean OK = true;
+			String Phone = "07332986400";
+			Found = AnCustomers.Find(Phone);
+			if (AnCustomers.Phone != "07332986400")
+			{
+				OK = false;
+
+			}
+			Assert.IsTrue(OK);
+		}
+		
+
+
 
 	}
 }
