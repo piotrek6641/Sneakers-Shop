@@ -66,7 +66,7 @@ namespace Testing2
         {
             clsOrder AnOrder = new clsOrder();
             Int16 TestData = 1;
-            AnOrder.Statues = TestData;
+            AnOrder.Statues = Convert.ToByte(TestData);
             Assert.AreEqual(AnOrder.Statues, TestData);
         }
 
@@ -117,6 +117,69 @@ namespace Testing2
 
             }
             //tst to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestDateOrderedFound()
+        {
+            clsOrder AnOrder = new clsOrder();
+            Boolean Found = false;
+            Boolean OK = true;
+            System.Int32 OrderId = 4;
+            Found = AnOrder.Find(OrderId);
+            if (AnOrder.DateAdded != Convert.ToDateTime("13/03/2022"))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestCustomerNoFound()
+        {
+            clsOrder AnOrder = new clsOrder();
+            Boolean Found = false;
+            Boolean OK = true;
+            System.Int32 OrderId = 4;
+            Found = AnOrder.Find(OrderId);
+            if (AnOrder.CustomerId != 4)
+            {
+                OK = false;
+
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestOrderStatuesFound()
+        {
+            clsOrder AnOrder = new clsOrder();
+            Boolean Found = false;
+            Boolean OK = true;
+            System.Int32 OrderId = 4;
+            Found = AnOrder.Find(OrderId);
+            if (AnOrder.Statues != 4)
+            {
+                OK = false;
+
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod ]
+        public void TestOrderStaffFound()
+        {
+            clsOrder AnOrder = new clsOrder();
+            Boolean Found = false;
+            Boolean OK = true;
+            System.Int32 OrderId = 4;
+            Found = AnOrder.Find(OrderId);
+            if (AnOrder.StaffId != 4)
+            {
+                OK = false;
+
+            }
             Assert.IsTrue(OK);
         }
     }
