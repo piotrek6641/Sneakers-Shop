@@ -90,7 +90,7 @@ namespace Testing5
 		{
 			clsCustomers AnCustomers = new clsCustomers();
 			Boolean Found = false;
-			String Customer_email = "norb@gmail.com";
+			String Customer_email = "bartosh@gmail.com";
 			Found = AnCustomers.Find(Customer_email);
 			Assert.IsTrue(Found);
 		}
@@ -100,9 +100,9 @@ namespace Testing5
 			clsCustomers AnCustomers = new clsCustomers();
 			Boolean Found = false;
 			Boolean OK = true;
-			String Customer_email = "norb@gmail.com";
+			String Customer_email = "bartosh@gmail.com";
 			Found = AnCustomers.Find(Customer_email);
-			if (AnCustomers.Customer_email != "norb@gmail.com")
+			if (AnCustomers.Customer_email != "bartosh@gmail.com")
 			{
 				OK = false;
 
@@ -157,7 +157,35 @@ namespace Testing5
 			}
 			Assert.IsTrue(OK);
 		}
-		
+		[TestMethod]
+		public void Findifspecialoffersavailable()
+		{
+			clsCustomers AnCustomers = new clsCustomers();
+			Boolean Found = false;
+			Boolean OK = true;
+			String Customer_email = "bartosh@gmail.com";
+			Found = AnCustomers.Find(Customer_email);
+			if (AnCustomers.Specialoffers != true)
+			{
+				OK = false;
+			}
+			Assert.IsTrue(OK);
+		}
+		[TestMethod]
+		public void Findifdateaddedfound()
+		{
+			clsCustomers AnCustomers = new clsCustomers();
+			Boolean Found = false;
+			Boolean OK = true;
+			String Customer_email = "bartosh@gmail.com";
+			Found = AnCustomers.Find(Customer_email);
+			if (AnCustomers.DateAdded != Convert.ToDateTime("2/10/2022"))
+			{
+				OK = false;
+			}
+			Assert.IsTrue(OK);
+		}
+
 
 
 
