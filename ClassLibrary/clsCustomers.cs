@@ -9,7 +9,18 @@ namespace ClassLibrary
         private String mAddress;
         private String mPhone;
         private DateTime mDateAdded;
-        public bool Specialoffers { get; set; }
+        private Boolean mSpecialoffers;
+        public bool Specialoffers
+        {
+            get
+            {
+                return mSpecialoffers;
+            }
+            set
+            {
+                mSpecialoffers = value;
+            }
+        }
         public DateTime DateAdded
         {
             get
@@ -70,20 +81,46 @@ namespace ClassLibrary
 
         public bool Find(int customerid)
         {
-            mCustomerid = 2;
-            mDateAdded = Convert.ToDateTime("2-10-2022");
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@Customerid", Customerid);
+            DB.Execute("sproc_tblCustomer_FilterByCustomerid");
+            if (DB.Count == 1)
+            {
+                mCustomerid = Convert.ToInt32(DB.DataTable.Rows[0]["Customerid"]);
+               
+                return true;
+            }
+            else 
+            {
+                return false;
+            }
+
            
-            return true;
+            
         }
 
-        public bool Find(string customer_email)
+        public bool Find(string phone)
         {
-            mCustomer_email = "norb@gmail.com";
-            mAddress = "Leicester le27df jarrom street 44";
-            mPhone = "07332986400";
-            return true;
-        }
-       
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@Customerid", Customerid);
+            DB.Execute("sproc_tblCustomer_FilterByCustomerid");
+            if (DB.Count == 1)
+            {
+                
+                mCustomer_email = Convert.ToString(DB.DataTable.Rows[0]["Customer_email"]);
+                mAddress = Convert.ToString(DB.DataTable.Rows[0]["Address"]);
+                mPhone = Convert.ToString(DB.DataTable.Rows[0]["Phone"]);
+                mSpecialoffers = Convert.ToBoolean(DB.DataTable.Rows[0]["Specialoffers"]);
+                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["DateAdded"]);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
 
+
+
+        }
     }
 }
