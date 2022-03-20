@@ -79,7 +79,7 @@ namespace ClassLibrary
 
 
 
-        public bool Find(int customerid)
+        public bool Find(int Customerid)
         {
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@Customerid", Customerid);
@@ -87,31 +87,13 @@ namespace ClassLibrary
             if (DB.Count == 1)
             {
                 mCustomerid = Convert.ToInt32(DB.DataTable.Rows[0]["Customerid"]);
-               
-                return true;
-            }
-            else 
-            {
-                return false;
-            }
-
-           
-            
-        }
-
-        public bool Find(string phone)
-        {
-            clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("@Customerid", Customerid);
-            DB.Execute("sproc_tblCustomer_FilterByCustomerid");
-            if (DB.Count == 1)
-            {
-                
+                mPhone = Convert.ToString(DB.DataTable.Rows[0]["Phone"]);
                 mCustomer_email = Convert.ToString(DB.DataTable.Rows[0]["Customer_email"]);
                 mAddress = Convert.ToString(DB.DataTable.Rows[0]["Address"]);
-                mPhone = Convert.ToString(DB.DataTable.Rows[0]["Phone"]);
                 mSpecialoffers = Convert.ToBoolean(DB.DataTable.Rows[0]["Specialoffers"]);
                 mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["DateAdded"]);
+
+
                 return true;
             }
             else
@@ -119,8 +101,12 @@ namespace ClassLibrary
                 return false;
             }
 
-
-
         }
+            
+
+
+        
     }
 }
+
+    
