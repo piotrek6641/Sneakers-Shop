@@ -4,8 +4,19 @@ namespace ClassLibrary
 {
     public class clsOrder
     {
-        
-        public bool Active { get; set; }
+
+        public Boolean mActive; 
+        public bool Active 
+        {
+            get
+            {
+                return mActive;
+            }
+            set
+            {
+                mActive = value;
+            }
+        }
 
 
 
@@ -85,18 +96,35 @@ namespace ClassLibrary
         }
 
 
-
-        public bool Find(int orderId)
+        public bool Find (int OrderId)
         {
-            //set the private data members to the test data value
-            mOrderId = 4;
-            mDateAdded = Convert.ToDateTime("13/03/2022");
-            mCustomerId = 4;
-            mStatues = 4;
-            mStaffId = 4;
-            //always return trure
-            return true; 
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("OrderNo", OrderId);
+            DB.Execute("sproc_tblOrdr_FilterByOrderNo");
+            if (DB.Count == 1) 
+            {
+                //set the private data members to the test data value
+                mOrderId = Convert.ToInt32(DB.DataTable.Rows[0]["OrderId"]);
+                
+                mCustomerId = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerId"]);
+                mStatues = Convert.ToByte(DB.DataTable.Rows[0]["OrderStatues"]);
+                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["Date"]);
+                mStaffId = Convert.ToInt32(DB.DataTable.Rows[0]["StaffId"]);
+                //mActive = Convert.ToBoolean(DB.DataTable.Rows[0]["Active"]);
+                //always return trure
+                return true;
+
+            }
+
+            else
+            {
+                return false;
+            }
+
+        }
+
+
+
         }
     }
 
-}
