@@ -89,7 +89,7 @@ namespace Testing2
             //Bollean variable to store the results of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 OrderId = 4;
+            Int32 OrderId = 2;
             //invoke the method
             Found = AnOrder.Find(OrderId);
             //test to see if the result is true
@@ -106,11 +106,11 @@ namespace Testing2
             //boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            System.Int32 OrderId = 4;
+            System.Int32 OrderId = 2;
             //invoke method
             Found = AnOrder.Find(OrderId);
             // check the adress no
-            if (AnOrder.OrderId != 4)
+            if (AnOrder.OrderId != 2)
             {
 
                 OK = false;
@@ -126,9 +126,9 @@ namespace Testing2
             clsOrder AnOrder = new clsOrder();
             Boolean Found = false;
             Boolean OK = true;
-            System.Int32 OrderId = 4;
+            System.Int32 OrderId = 2;
             Found = AnOrder.Find(OrderId);
-            if (AnOrder.DateAdded != Convert.ToDateTime("13/03/2022"))
+            if (AnOrder.DateAdded != Convert.ToDateTime("22/02/2021"))
             {
                 OK = false;
             }
@@ -141,9 +141,9 @@ namespace Testing2
             clsOrder AnOrder = new clsOrder();
             Boolean Found = false;
             Boolean OK = true;
-            System.Int32 OrderId = 4;
+            System.Int32 OrderId = 2;
             Found = AnOrder.Find(OrderId);
-            if (AnOrder.CustomerId != 4)
+            if (AnOrder.CustomerId != 2)
             {
                 OK = false;
 
@@ -157,9 +157,9 @@ namespace Testing2
             clsOrder AnOrder = new clsOrder();
             Boolean Found = false;
             Boolean OK = true;
-            System.Int32 OrderId = 4;
+            System.Int32 OrderId = 2;
             Found = AnOrder.Find(OrderId);
-            if (AnOrder.Statues != 4)
+            if (AnOrder.Statues != 0)
             {
                 OK = false;
 
@@ -173,9 +173,9 @@ namespace Testing2
             clsOrder AnOrder = new clsOrder();
             Boolean Found = false;
             Boolean OK = true;
-            System.Int32 OrderId = 4;
+            System.Int32 OrderId = 2;
             Found = AnOrder.Find(OrderId);
-            if (AnOrder.StaffId != 4)
+            if (AnOrder.StaffId != 1)
             {
                 OK = false;
 
