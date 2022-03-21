@@ -12,6 +12,9 @@ public partial class _1Viewer : System.Web.UI.Page
     {
         clsCustomers AnCustomers = new clsCustomers();
         AnCustomers = (clsCustomers)Session["AnCustomers"];
-        Response.Write(AnCustomers.Customer_email);
+        Response.Write(AnCustomers.DateAdded);
+        Response.Write(AnCustomers.Address);
+        Response.Write(AnCustomers.Phone);
+        Response.Write(AnCustomers.Customerid);
     }
 }
