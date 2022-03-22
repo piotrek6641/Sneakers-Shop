@@ -71,7 +71,7 @@ namespace ClassLibrary
         public bool Find(string Login)
         {
             clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("@login", login);
+            DB.AddParameter("@login", Login);
             DB.Execute("sproc_tblStaff_FilterByLogin");
             if(DB.Count == 1)
             {
