@@ -86,5 +86,62 @@ namespace ClassLibrary
                 return false;
             }
         }
+
+        public string Valid(/*string sneakerNo,*/ string sneakerName, string price, string dateAdded)
+        {
+            String Error = "";
+            DateTime DateTemp;
+            Int32 IntTemp;
+
+            if (sneakerName.Length == 0)
+            {
+                Error = Error + "The sneaker no may no be blank : ";
+            }
+
+            if(sneakerName.Length > 20)
+            {
+                Error = Error + "The sneakerNo must be less than 6 characters : ";
+            }
+
+            try
+            {
+                DateTemp = Convert.ToDateTime(dateAdded);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the past : ";
+                }
+
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                Error = Error + "The data was not a valid date : ";
+            }
+            try
+            {
+                IntTemp = Convert.ToInt32(price);
+                if (IntTemp < 0)
+                {
+                    Error = Error + "The price value cannot be negative : ";
+                }
+
+                if (IntTemp > 100000)
+                {
+                    Error = Error + "The price value cannot be bigger then 100000 : ";
+                }
+            }
+            catch
+            {
+                Error = Error + "The price has to be integer : ";
+            }
+            
+
+            return Error;
+        }
+
+       
     }
 }
