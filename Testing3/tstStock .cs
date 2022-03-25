@@ -3,10 +3,15 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
 namespace Testing3
-{
+{   
+ 
     [TestClass]
     public class tstStock
     {
+        string SneakerName = "Air Jordan 1";
+        string DateAdded = DateTime.Now.Date.ToString();
+        string Price = "100";
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -144,6 +149,254 @@ namespace Testing3
                 OK = false;
             }
             Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            clsStock AStock = new clsStock();
+            String Error = "";
+            Error = AStock.Valid(SneakerName, Price, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SneakerNameMinLessOne()
+        {
+            clsStock AStock = new clsStock();
+            String Error = "";
+            string SneakerName = "";
+            Error = AStock.Valid(SneakerName, Price, DateAdded);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SneakerNameMinPlusOne()
+        {
+            clsStock AStock = new clsStock();
+            String Error = "";
+            string SneakerName = "AF";
+            Error = AStock.Valid(SneakerName, Price, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SneakerNameMaxLessOne()
+        {
+            clsStock AStock = new clsStock();
+            String Error = "";
+            string SneakerName = "aaaaaaaaaaaaaaaaaaa";
+            Error = AStock.Valid(SneakerName, Price, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SneakerNameMax()
+        {
+            clsStock AStock = new clsStock();
+            String Error = "";
+            string SneakerName = "aaaaaaaaaaaaaaaaaaaa";
+            Error = AStock.Valid(SneakerName, Price, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SneakerNameMid()
+        {
+            clsStock AStock = new clsStock();
+            String Error = "";
+            string SneakerName = "aaaaaaaaaa";
+            Error = AStock.Valid(SneakerName, Price, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SneakerNameMaxPlusOne()
+        {
+            clsStock AStock = new clsStock();
+            String Error = "";
+            string SneakerName = "aaaaaaaaaaaaaaaaaaaaa";
+            Error = AStock.Valid(SneakerName, Price, DateAdded);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SneakerNameExtremeMax()
+        {
+            clsStock AStock = new clsStock();
+            String Error = "";
+            string SneakerName = "";
+            SneakerName = SneakerName.PadRight(500,'a');
+            Error = AStock.Valid(SneakerName, Price, DateAdded);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        //Date Added tests
+
+        [TestMethod]
+        public void DateAddedExtremeMin()
+        {
+            clsStock AStock = new clsStock();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(-100);
+            string DateAdded = TestDate.ToString();
+            Error = AStock.Valid(SneakerName, Price, DateAdded);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateAddedLessOne()
+        {
+            clsStock AStock = new clsStock();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(-1);
+            string DateAdded = TestDate.ToString();
+            Error = AStock.Valid(SneakerName, Price, DateAdded);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateAddedMin()
+        {
+            clsStock AStock = new clsStock();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            string DateAdded = TestDate.ToString();
+            Error = AStock.Valid(SneakerName, Price, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateAddedMinPlusOne()
+        {
+            clsStock AStock = new clsStock();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(1);
+            string DateAdded = TestDate.ToString();
+            Error = AStock.Valid(SneakerName, Price, DateAdded);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateAddedExtremeMax()
+        {
+            clsStock AStock = new clsStock();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(100);
+            string DateAdded = TestDate.ToString();
+            Error = AStock.Valid(SneakerName, Price, DateAdded);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateAddedInvalidData()
+        {
+            clsStock AStock = new clsStock();
+            String Error = "";
+            string DateAdded = "this is not a date!";
+            Error = AStock.Valid(SneakerName, Price, DateAdded);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        //Price 
+        [TestMethod]
+        public void PriceMinLessOne()
+        {
+            clsStock AStock = new clsStock();
+            String Error = "";
+            string Price = "-1";
+            Error = AStock.Valid(SneakerName, Price, DateAdded);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PriceMin()
+        {
+            clsStock AStock = new clsStock();
+            String Error = "";
+            string Price = "0";
+            Error = AStock.Valid(SneakerName, Price, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PriceMinPlusOne()
+        {
+            clsStock AStock = new clsStock();
+            String Error = "";
+            string Price = "1";
+            Error = AStock.Valid(SneakerName, Price, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PriceMaxLessOne()
+        {
+            clsStock AStock = new clsStock();
+            String Error = "";
+            string Price = "99999";
+            Error = AStock.Valid(SneakerName, Price, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PriceMax()
+        {
+            clsStock AStock = new clsStock();
+            String Error = "";
+            string Price = "100000";
+            Error = AStock.Valid(SneakerName, Price, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PriceMaxPlusOne()
+        {
+            clsStock AStock = new clsStock();
+            String Error = "";
+            string Price = "100001";
+            Error = AStock.Valid(SneakerName, Price, DateAdded);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PriceMid()
+        {
+            clsStock AStock = new clsStock();
+            String Error = "";
+            string Price = "50000";
+            Error = AStock.Valid(SneakerName, Price, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PriceExtremeMax()
+        {
+            clsStock AStock = new clsStock();
+            String Error = "";
+            string Price = "200000";
+            Error = AStock.Valid(SneakerName, Price, DateAdded);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        //How to write this test? Is it even possible?
+        [TestMethod]
+        public void PriceInvalidData()
+        {
+            clsStock AStock = new clsStock();
+            String Error = "";
+            string Price = "swag";
+            Error = AStock.Valid(SneakerName, Price, DateAdded);
+            Assert.AreNotEqual(Error, "");
         }
     }
 }
