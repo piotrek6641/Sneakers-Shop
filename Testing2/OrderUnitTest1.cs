@@ -7,12 +7,23 @@ namespace Testing2
     [TestClass]
     public class tstOrder
     {
+
+        //good test data
+        //create test data to pass to the method valid
+        string CustomerId = "2";
+        string StatuesNo = "0";
+        string DateAdded = DateTime.Now.Date.ToString();
+        string StaffId = "1";
+
+
         [TestMethod]
         public void InstanceOK()
         {
             clsOrder AnOrder = new clsOrder();
             Assert.IsNotNull(AnOrder);
         }
+
+
 
         [TestMethod]
 
@@ -97,6 +108,19 @@ namespace Testing2
         }
 
         [TestMethod]
+        public void ValidMethodOk()
+        {
+            //create an instance of class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error message
+            String Error = "";
+            //invoke the method
+            Error = AnOrder.Valid(CustomerId, StatuesNo, DateAdded, StaffId);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
         public void TestOrderNoFound()
         {
             // create an instance of the class we want create
@@ -167,7 +191,7 @@ namespace Testing2
             Assert.IsTrue(OK);
         }
 
-        [TestMethod ]
+        [TestMethod]
         public void TestOrderStaffFound()
         {
             clsOrder AnOrder = new clsOrder();
@@ -181,6 +205,179 @@ namespace Testing2
 
             }
             Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void StatuesNoMinLessOne()
+        {
+            //create an isntance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error mesasge
+            String Error = "";
+            //create some test dsata to pass the method
+            string StatuesNo = ""; //this should trigger an error
+            //invoke te method
+            Error = AnOrder.Valid(CustomerId, StatuesNo, DateAdded, StaffId);
+            // test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StatuesNoMin()
+        {
+            //create an isntance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error mesasge
+            String Error = "";
+            //create variable to store test data
+            Byte TestStatues;
+            // set it to the min
+            TestStatues = 0;
+            //create some test dsata to pass the method
+            string StatuesNo = TestStatues.ToString(); //this should trigger an error
+            //invoke te method
+            Error = AnOrder.Valid(CustomerId, StatuesNo, DateAdded, StaffId);
+            // test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void StatuesNoMinPlusOne()
+        {
+            //create an isntance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error mesasge
+            String Error = "";
+            //create variable to store test data
+            Byte TestStatues;
+            // set it to the minplusone
+            TestStatues = 0 + 1;
+            //create some test dsata to pass the method
+            string StatuesNo = TestStatues.ToString(); //this should trigger an error
+            //invoke te method
+            Error = AnOrder.Valid(CustomerId, StatuesNo, DateAdded, StaffId);
+            // test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateAddedExtremeMin()
+        {
+            //create an isntance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error mesasge
+            String Error = "";
+            //create variable to store test data
+            DateTime TestDate;
+            // set it to todays date
+            TestDate = DateTime.Now.Date;
+            //cahnge the date to 100 years ago
+            TestDate = TestDate.AddYears(-100);
+            //convert date variable to string variable
+            string DateAdded = TestDate.ToString();
+            //invoke method
+            Error = AnOrder.Valid(CustomerId, StatuesNo, DateAdded, StaffId);
+            // test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateAddedMinLessOne()
+        {
+            //create an isntance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error mesasge
+            String Error = "";
+            //create variable to store test data
+            DateTime TestDate;
+            // set it to todays date
+            TestDate = DateTime.Now.Date;
+            //cahnge the date to 1 day  ago
+            TestDate = TestDate.AddDays(-1);
+            //convert date variable to string variable
+            string DateAdded = TestDate.ToString();
+            //invoke method
+            Error = AnOrder.Valid(CustomerId, StatuesNo, DateAdded, StaffId);
+            // test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateAddedMin()
+        {
+            //create an isntance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error mesasge
+            String Error = "";
+            //create variable to store test data
+            DateTime TestDate;
+            // set it to todays date
+            TestDate = DateTime.Now.Date;
+            //convert date variable to string variable
+            string DateAdded = TestDate.ToString();
+            //invoke method
+            Error = AnOrder.Valid(CustomerId, StatuesNo, DateAdded, StaffId);
+            // test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void DateAddedMinPlusPne()
+        {
+            //create an isntance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error mesasge
+            String Error = "";
+            //create variable to store test data
+            DateTime TestDate;
+            // set it to todays date
+            TestDate = DateTime.Now.Date;
+            //cahnge the date to 1 in future
+            TestDate = TestDate.AddDays(1);
+            //convert date variable to string variable
+            string DateAdded = TestDate.ToString();
+            //invoke method
+            Error = AnOrder.Valid(CustomerId, StatuesNo, DateAdded, StaffId);
+            // test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateAddedExtremeMax()
+        {
+            //create an isntance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error mesasge
+            String Error = "";
+            //create variable to store test data
+            DateTime TestDate;
+            // set it to todays date
+            TestDate = DateTime.Now.Date;
+            //cahnge the date to 100 years in future 
+            TestDate = TestDate.AddYears(100);
+            //convert date variable to string variable
+            string DateAdded = TestDate.ToString();
+            //invoke method
+            Error = AnOrder.Valid(CustomerId, StatuesNo, DateAdded, StaffId);
+            // test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateAddedInvalidData()
+        {
+            //create an isntance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error mesasge
+            String Error = "";
+            //set the DateAdded to a non date value
+            string DateAdded = "not a date";
+            //invoke method
+            Error = AnOrder.Valid(CustomerId, StatuesNo, DateAdded, StaffId);
+            // test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+
         }
     }
 }

@@ -123,8 +123,47 @@ namespace ClassLibrary
 
         }
 
+        public string Valid(string customerId, string statues, string dateAdded, string staffId)
+        {
+            //craete a string variable to store the error
+            String Error = "";
+            Byte StatuesTemp;
+            DateTime DateTemp;
+            //if the Statues is blank
+            StatuesTemp = Convert.ToByte(statues);
+            if (StatuesTemp < 0)
+            {
+                //record error
+                Error = Error + "The statues field cannot be less than 0: ";
+            }
+            try
+            {
 
-
+                //copy the dateadded value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(dateAdded);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    //reecord error
+                    Error = Error + "The date cannot be in the past:  ";
+                }
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    //reecord error
+                    Error = Error + "The date cannot be in the future:  ";
+                }
+                
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The datewas not a valid date:  ";
+            }
+            //return any error message
+            return Error;
         }
+
+
+
+    }
     }
 
