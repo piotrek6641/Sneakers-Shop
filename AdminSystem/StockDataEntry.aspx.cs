@@ -18,19 +18,38 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create a new instance of clsStock
         clsStock AStock = new clsStock();
 
-        //capture the Sneaker Name
-        AStock.SneakerName = txtSneakerName.Text;
+        //string SneakerNo = txtSneakerNo.Text;
+        string SneakerName = txtSneakerName.Text;
+        string DateAdded = txtDateAdded.Text;
+        string Price = txtPrice.Text;
+        
+        string Error = "";
+        Error = AStock.Valid(SneakerName, Price, DateAdded);
 
-        //capture rest attributes
-        AStock.DateAdded = DateTime.Parse(txtDateAdded.Text);
-        AStock.Price = Int32.Parse(txtPrice.Text);
-        AStock.SneakerNo = Int32.Parse(txtSneakerNo.Text);
+        if(Error == "")
+        {
+            //AStock.SneakerNo = Int32.Parse(txtSneakerNo.Text);
+            //capture the Sneaker Name
+            AStock.SneakerName = txtSneakerName.Text;
+            //caputre the Date Added
+            AStock.DateAdded = DateTime.Parse(txtDateAdded.Text);
+            //caputre the Price
+            AStock.Price = Int32.Parse(txtPrice.Text);
+            
 
-        //store the address in the session object
-        Session["AStock"] = AStock;
+            //store the address in the session object
+            Session["AStock"] = AStock;
 
-        //navigate to the viewer page
-        Response.Redirect("StockViewer.aspx");
+            //navigate to the viewer page
+            //Redirect -> Write?
+            Response.Redirect("StockViewer.aspx");
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
+
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
