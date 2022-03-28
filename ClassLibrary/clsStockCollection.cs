@@ -87,5 +87,12 @@ namespace ClassLibrary
 
             DB.Execute("sproc_tblStock_Update");
         }
+
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@SneakerNo", mThisStock.SneakerNo);
+            DB.Execute("sproc_tblStock_Delete");
+        }
     }
 }
