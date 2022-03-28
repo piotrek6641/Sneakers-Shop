@@ -28,21 +28,22 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         if(Error == "")
         {
-            //AStock.SneakerNo = Int32.Parse(txtSneakerNo.Text);
-            //capture the Sneaker Name
-            AStock.SneakerName = txtSneakerName.Text;
-            //caputre the Date Added
-            AStock.DateAdded = DateTime.Parse(txtDateAdded.Text);
-            //caputre the Price
-            AStock.Price = Int32.Parse(txtPrice.Text);
             
+            AStock.SneakerName = SneakerName;
+            
+            AStock.DateAdded = Convert.ToDateTime(DateAdded);
+           
+            AStock.Price = Convert.ToInt32(Price);
 
+            clsStockCollection StockList = new clsStockCollection();
+
+            StockList.ThisStock = AStock;
+            StockList.Add();
             //store the address in the session object
             Session["AStock"] = AStock;
 
             //navigate to the viewer page
-            //Redirect -> Write?
-            Response.Redirect("StockViewer.aspx");
+            Response.Redirect("StockList.aspx");
         }
         else
         {
