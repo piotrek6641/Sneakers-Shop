@@ -75,5 +75,17 @@ namespace ClassLibrary
 
             return DB.Execute("sproc_tblStock_Insert");
         }
+
+        public void Update()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@SneakerNo", mThisStock.SneakerNo);
+            DB.AddParameter("@SneakerName", mThisStock.SneakerName);
+            DB.AddParameter("@DateAdded", mThisStock.DateAdded);
+            DB.AddParameter("@Price", mThisStock.Price);
+            DB.AddParameter("@Available", mThisStock.Available);
+
+            DB.Execute("sproc_tblStock_Update");
+        }
     }
 }

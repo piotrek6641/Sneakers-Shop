@@ -31,4 +31,20 @@ public partial class _1_List : System.Web.UI.Page
         Session["SneakerNo"] = -1;
         Response.Redirect("StockDataEntry.aspx");
     }
+
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+        Int32 SneakerNo;
+
+        if(lstStockList.SelectedIndex != -1)
+        {
+            SneakerNo = Convert.ToInt32(lstStockList.SelectedValue);
+            Session["SneakerNo"] = SneakerNo;
+            Response.Redirect("StockDataEntry.aspx");
+        }
+        else
+        {
+            lblError.Text = "Please select record to edit from the list";
+        }
+    }
 }

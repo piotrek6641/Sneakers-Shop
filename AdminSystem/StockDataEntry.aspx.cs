@@ -8,9 +8,29 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 SneakerNo;
     protected void Page_Load(object sender, EventArgs e)
     {
+        SneakerNo = Convert.ToInt32(Session["SneakerNo"]);
+        if(IsPostBack == false)
+        {
+            if(SneakerNo != -1)
+            {
+                DisplayStock();
+            }
+        }
+    }
 
+    void DisplayStock()
+    {
+        clsStockCollection StockBook = new clsStockCollection();
+        StockBook.ThisStock.Find(SneakerNo);
+
+        txtSneakerNo.Text = StockBook.ThisStock.SneakerNo.ToString();
+        txtSneakerName.Text = StockBook.ThisStock.SneakerName;
+        txtDateAdded.Text = StockBook.ThisStock.DateAdded.ToString();
+        txtPrice.Text = StockBook.ThisStock.Price.ToString();
+        chkAvailable.Checked = StockBook.ThisStock.Available;
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
@@ -28,21 +48,30 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         if(Error == "")
         {
-            
+            AStock.SneakerNo = SneakerNo;
+
             AStock.SneakerName = SneakerName;
             
             AStock.DateAdded = Convert.ToDateTime(DateAdded);
            
             AStock.Price = Convert.ToInt32(Price);
 
+            AStock.Available = chkAvailable.Checked;
+
             clsStockCollection StockList = new clsStockCollection();
 
-            StockList.ThisStock = AStock;
-            StockList.Add();
-            //store the address in the session object
-            Session["AStock"] = AStock;
+            if(SneakerNo == -1)
+            {
+                StockList.ThisStock = AStock;
+                StockList.Add();
+            }
+            else
+            {
+                StockList.ThisStock.Find(SneakerNo);
+                StockList.ThisStock = AStock;
+                StockList.Update();
+            }
 
-            //navigate to the viewer page
             Response.Redirect("StockList.aspx");
         }
         else
