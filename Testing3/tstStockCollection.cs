@@ -102,5 +102,35 @@ namespace Testing3
             Assert.AreEqual(AllStock.ThisStock, TestItem);
         }
 
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            clsStockCollection AllStock = new clsStockCollection();
+            clsStock TestItem = new clsStock();
+            Int32 PrimaryKey = 0;
+
+            TestItem.Available = true;
+            TestItem.SneakerNo = 1;
+            TestItem.SneakerName = "Air Jordan 1 Mid";
+            TestItem.Price = 100;
+            TestItem.DateAdded = DateTime.Now.Date;
+
+            AllStock.ThisStock = TestItem;
+            PrimaryKey = AllStock.Add();
+
+            TestItem.SneakerNo = PrimaryKey;
+
+            TestItem.Available = false;
+            TestItem.SneakerNo = 2;
+            TestItem.SneakerName = "Air Jordan 1 Hight";
+            TestItem.Price = 500;
+            TestItem.DateAdded = DateTime.Now.Date;
+            AllStock.ThisStock = TestItem;
+            AllStock.Update();
+            AllStock.ThisStock.Find(PrimaryKey);
+
+            Assert.AreEqual(AllStock.ThisStock, TestItem);
+        }
+
     }
 }
