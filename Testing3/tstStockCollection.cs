@@ -157,5 +157,50 @@ namespace Testing3
             Assert.IsFalse(Found);
         }
 
+        [TestMethod]
+        public void ReportBySneakerNameOK()
+        {
+            clsStockCollection AllStock = new clsStockCollection();
+            clsStockCollection FilteredStock = new clsStockCollection();
+
+            FilteredStock.ReportBySneakerName("");
+            Assert.AreEqual(AllStock.Count, FilteredStock.Count);
+
+         }
+
+        [TestMethod]
+        public void ReportBySneakerNameNoneFound()
+        {
+            clsStockCollection FilteredStock = new clsStockCollection();
+
+            FilteredStock.ReportBySneakerName("random sneaker");
+            Assert.AreEqual(0, FilteredStock.Count);
+
+        }
+
+        [TestMethod]
+        public void ReportBySneakerNameTestDataFound()
+        {
+            clsStockCollection FilteredStock = new clsStockCollection();
+            Boolean OK = true;
+            FilteredStock.ReportBySneakerName("Nike Air Jordan 1");
+            if(FilteredStock.Count == 2)
+            {
+                if(FilteredStock.StockList[0].SneakerNo != 1)
+                {
+                    OK = false;
+                }
+                if(FilteredStock.StockList[1].SneakerNo != 15)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
     }
 }

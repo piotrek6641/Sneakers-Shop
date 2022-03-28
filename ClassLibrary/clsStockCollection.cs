@@ -40,14 +40,18 @@ namespace ClassLibrary
 
         public clsStockCollection()
         {
-            Int32 Index = 0;
-            Int32 RecordCount = 0;
-
             clsDataConnection DB = new clsDataConnection();
             DB.Execute("sproc_tblStock_SelectAll");
+            PopulateArray(DB);
+        }
+        void PopulateArray(clsDataConnection DB)
+        {
+            Int32 Index = 0;
+            Int32 RecordCount;
             RecordCount = DB.Count;
-            
-            while(Index < RecordCount)
+            mStockList = new List<clsStock>();
+
+            while (Index < RecordCount)
             {
                 clsStock AStock = new clsStock();
 
@@ -61,7 +65,6 @@ namespace ClassLibrary
 
                 Index++;
             }
-
         }
 
         public int Add()
@@ -94,5 +97,15 @@ namespace ClassLibrary
             DB.AddParameter("@SneakerNo", mThisStock.SneakerNo);
             DB.Execute("sproc_tblStock_Delete");
         }
+
+        public void ReportBySneakerName(string SneakerName)
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@SneakerName", SneakerName);
+            DB.Execute("sproc_tblStock_FilterBySneakerName");
+            PopulateArray(DB);
+        }
+
+        
     }
 }

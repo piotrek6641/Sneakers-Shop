@@ -16,6 +16,14 @@
             <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" Text="Edit" />
             <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" Text="Delete" />
         </p>
+        <p>
+            Enter sneaker name
+            <asp:TextBox ID="txtFilter" runat="server"></asp:TextBox>
+        </p>
+        <p>
+            <asp:Button ID="btnApply" runat="server" OnClick="btnApply_Click" Text="Apply" />
+            <asp:Button ID="btnClear" runat="server" OnClick="btnClear_Click" Text="Clear" />
+        </p>
         <asp:Label ID="lblError" runat="server"></asp:Label>
     </form>
 </body>
