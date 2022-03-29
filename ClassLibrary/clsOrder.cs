@@ -127,15 +127,37 @@ namespace ClassLibrary
         {
             //craete a string variable to store the error
             String Error = "";
+            Int32 CustomerIdTemp;
+            Int32 StaffIdTemp;
             Byte StatuesTemp;
             DateTime DateTemp;
             //if the Statues is blank
-            StatuesTemp = Convert.ToByte(statues);
-            if (StatuesTemp < 0)
+            String Erro = "";
+            CustomerIdTemp = Convert.ToInt32(customerId);
+            if (CustomerIdTemp < 1)
             {
-                //record error
-                Error = Error + "The statues field cannot be less than 0: ";
+                Error = Error + "customer id invalid: ";
             }
+            StaffIdTemp = Convert.ToInt32(staffId);
+            if (StaffIdTemp < 1)
+            {
+                Error = Error + "Staff id invalid: ";
+            }
+            try
+            { 
+                StatuesTemp = Convert.ToByte(statues);
+                if (StatuesTemp < 0)
+                {
+                    //record error
+                    Error = Error + "The statues field cannot be less than 0: ";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The statues was not a valid statues:  ";
+            }
+            
             try
             {
 

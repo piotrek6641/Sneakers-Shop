@@ -175,6 +175,8 @@ namespace Testing2
             Assert.IsTrue(OK);
         }
 
+
+
         [TestMethod]
         public void TestOrderStatuesFound()
         {
@@ -190,6 +192,8 @@ namespace Testing2
             }
             Assert.IsTrue(OK);
         }
+
+
 
         [TestMethod]
         public void TestOrderStaffFound()
@@ -207,19 +211,44 @@ namespace Testing2
             Assert.IsTrue(OK);
         }
 
+
+
+        //[TestMethod]
+        //public void StatuesNoMinLessOne()
+        //{
+        //create an isntance of the class we want to create
+        //clsOrder AnOrder = new clsOrder();
+        //string variable to store any error mesasge
+        //String Error = "";
+        //create variable to store test data
+        //Byte TestStatues;
+        // set it to the min
+        //TestStatues = 0;
+        //create some test dsata to pass the method
+        //string StatuesNo = TestStatues.ToString(); ; //this should trigger an error
+        //invoke te method
+        //Error = AnOrder.Valid(CustomerId, StatuesNo, DateAdded, StaffId);
+        // test to see that the result is correct
+        //Assert.AreNotEqual(Error, "");
+        //}
+
+
+
         [TestMethod]
-        public void StatuesNoMinLessOne()
+        public void StatuesInvalidStatues()
         {
             //create an isntance of the class we want to create
             clsOrder AnOrder = new clsOrder();
             //string variable to store any error mesasge
             String Error = "";
-            //create some test dsata to pass the method
-            string StatuesNo = ""; //this should trigger an error
-            //invoke te method
+            //set the DateAdded to a non date value
+            string StatuesNo = "not a statues";
+            //invoke method
             Error = AnOrder.Valid(CustomerId, StatuesNo, DateAdded, StaffId);
             // test to see that the result is correct
             Assert.AreNotEqual(Error, "");
+
+
         }
 
         [TestMethod]
@@ -379,5 +408,78 @@ namespace Testing2
 
 
         }
+
+        [TestMethod]
+        public void CustomerIdMinLessOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            Int32 TestCustomerId;
+            TestCustomerId = 1 - 1;
+            string CustomerId = TestCustomerId.ToString();
+            Error = AnOrder.Valid(CustomerId, StatuesNo, DateAdded, StaffId);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerIdMin()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            Int32 TestCustomerId;
+            TestCustomerId = 1;
+            string CustomerId = TestCustomerId.ToString();
+            Error = AnOrder.Valid(CustomerId, StatuesNo, DateAdded, StaffId);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerIdMinPlusOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            Int32 TestCustomerId;
+            TestCustomerId = 1 + 1;
+            string CustomerId = TestCustomerId.ToString();
+            Error = AnOrder.Valid(CustomerId, StatuesNo, DateAdded, StaffId);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffIdMinLessOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            Int32 TestStaffId;
+            TestStaffId = 1 - 1;
+            string StaffId = TestStaffId.ToString();
+            Error = AnOrder.Valid(CustomerId, StatuesNo, DateAdded, StaffId);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffIdMin()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            Int32 TestStaffId;
+            TestStaffId = 1;
+            string StaffId = TestStaffId.ToString();
+            Error = AnOrder.Valid(CustomerId, StatuesNo, DateAdded, StaffId);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffIdMinPlusOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            Int32 TestStaffId;
+            TestStaffId = 1 + 1;
+            string StaffId = TestStaffId.ToString();
+            Error = AnOrder.Valid(CustomerId, StatuesNo, DateAdded, StaffId);
+            Assert.AreEqual(Error, "");
+        }
+
     }
 }
