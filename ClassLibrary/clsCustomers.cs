@@ -102,10 +102,60 @@ namespace ClassLibrary
             }
 
         }
-            
 
+        public string Valid( string Customer_email, string Phone, string DateAdded, string Address)
+        {
+            String Error = "";
+            DateTime DateTemp;
+            Int32 IntTemp;
 
-        
+            if (Customer_email.Length == 0)
+            {
+                Error = Error + "The Customer_email may not be blank : ";
+            }
+
+            if (Customer_email.Length > 50)
+            {
+                Error = Error + "The Customer_email must be less than 50 characters : ";
+            }
+            if (Address.Length == 0)
+            {
+                Error = Error + "The Address may not be blank : ";
+            }
+
+            if (Address.Length > 50)
+            {
+                Error = Error + "The Phone must be less than 50 characters : ";
+            }
+            if (Phone.Length == 0)
+            {
+                Error = Error + "The Phone may not be blank : ";
+            }
+
+            if (Phone.Length > 15)
+            {
+                Error = Error + "The Phone must be less than 50 characters : ";
+            }
+
+            try
+            {
+                DateTemp = Convert.ToDateTime(DateAdded);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the past : ";
+                }
+
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                Error = Error + "The data was not a valid date : ";
+            }
+            return Error;
+        }
     }
 }
 
