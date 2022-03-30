@@ -8,6 +8,8 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 Customerid;
+
     protected void Page_Load(object sender, EventArgs e)
     {
        
@@ -16,20 +18,35 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
+
         //create a new instance of clscustomers
         clsCustomers AnCustomers = new clsCustomers();
-        //capture customer email
-        AnCustomers.Customer_email = txtCustomer_email.Text;
-        //capture rest attribute
-        AnCustomers.DateAdded = DateTime.Parse(txtDateAdded.Text);
-        AnCustomers.Address = txtAddress.Text;
-        AnCustomers.Phone = txtPhone.Text;
-        AnCustomers.Customerid = Int32.Parse(txtCustomerid.Text);
+        string Customer_email = txtCustomer_email.Text;
+        string DateAdded = txtDateAdded.Text;
+        string Address = txtAddress.Text;
+        string Phone = txtPhone.Text;
+        string Error = "";
+        Error = AnCustomers.Valid(Customer_email, Phone, DateAdded, Address);
+        if (Error == "")
+        {
+            //capture customer email
+            AnCustomers.Customerid = Customerid;
+            AnCustomers.Customer_email = Customer_email;
+            //capture rest attribute
+            AnCustomers.DateAdded = Convert.ToDateTime(DateAdded);
+            AnCustomers.Address = Address;
+            AnCustomers.Phone = Phone;
 
-        //store the address in the session object
-        Session["AnCustomers"] = AnCustomers;
-        //navigate to the viewer page
-        Response.Redirect("CustomerViewer.aspx");
+
+            //store the address in the session object
+            Session["AnCustomers"] = AnCustomers;
+            //navigate to the viewer page
+            Response.Redirect("CustomerViewer.aspx");
+        }
+        else
+        { 
+        lblError.Text = Error;
+        }
     }
     protected void btnFind_Click(object sender, EventArgs e)
     {
