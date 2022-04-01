@@ -132,7 +132,7 @@ namespace ClassLibrary
             Byte StatuesTemp;
             DateTime DateTemp;
             //if the Statues is blank
-            String Erro = "";
+            
             CustomerIdTemp = Convert.ToInt32(customerId);
             if (CustomerIdTemp < 1)
             {
