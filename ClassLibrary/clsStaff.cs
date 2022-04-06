@@ -4,24 +4,37 @@ namespace ClassLibrary
 {
     public class clsStaff
     {
+        private int mStaffID;
         private string Login;
-        private DateTime mDateAdded;
+        private DateTime mDateCreated;
         private string Password;
         private Boolean isAdmin;
         private string email;
         public bool Active { get; set; }
-        public DateTime DateAdded
+        /*public int Id
         {
             get
             {
-                return mDateAdded;
+                return mId;
             }
             set
             {
-                mDateAdded = value;
+                mId = value;
             }
         }
-        public DateTime DateCreated { get; set; }
+        */
+     
+        public DateTime DateCreated
+        {
+            get
+            {
+                return mDateCreated;
+            }
+            set
+            {
+                mDateCreated = value;
+            }
+        }
         public bool StaffIsAdmin
         {
             get
@@ -68,18 +81,20 @@ namespace ClassLibrary
             }
         }
 
-        public bool Find(string Login)
+        public bool Find(int StaffID)
         {
             clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("@login", Login);
+            DB.AddParameter("@StaffID", StaffID);
             DB.Execute("sproc_tblStaff_FilterByLogin");
             if(DB.Count == 1)
             {
+
+                StaffID = Convert.ToInt32(DB.DataTable.Rows[0]["StaffID"]);
                 Login = Convert.ToString(DB.DataTable.Rows[0]["Login"]);
                 Password = Convert.ToString(DB.DataTable.Rows[0]["Password"]);
                 email = Convert.ToString(DB.DataTable.Rows[0]["StaffEmail"]);
                 isAdmin = Convert.ToBoolean(DB.DataTable.Rows[0]["isAdmin"]);
-                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["DateCreated"]);
+                DateCreated = Convert.ToDateTime(DB.DataTable.Rows[0]["DateCreated"]);
                 return true;
             }
             else
