@@ -19,7 +19,7 @@
             <asp:TextBox ID="TextStaffPassword" runat="server"></asp:TextBox>
             <br />
             <asp:Label ID="StaffDateCreated" runat="server" Text="DateCreated"></asp:Label>
-            <asp:TextBox ID="TextDateCreated" runat="server"></asp:TextBox>
+            <asp:TextBox ID="TextDateCreated" runat="server" OnTextChanged="TextDateCreated_TextChanged"></asp:TextBox>
             <br />
              
             <asp:CheckBox ID="IsAdmin" runat="server" Text="IsAdmin" />
@@ -28,6 +28,7 @@
             
             <asp:Button ID="StaffOK" runat="server" Text="OK" OnClick="StaffOK_Click" />
             <asp:Button ID="StaffCancel" runat="server" Text="Cancel" />
+            <asp:Button ID="Find" runat="server" Text="Find" OnClick="btn_Find_Click" />
         </div>
     </form>
 </body>

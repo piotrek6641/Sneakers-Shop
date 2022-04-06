@@ -12,8 +12,8 @@ namespace Testing1
         {
             clsStaff aStaff = new clsStaff();
             Boolean Found = false;
-            String Login = "p2613576";
-            Found = aStaff.Find(Login); 
+            Int32 StaffID = 1;
+            Found = aStaff.Find(StaffID); 
             Assert.IsTrue(Found);
         }
         [TestMethod]
@@ -22,8 +22,8 @@ namespace Testing1
             clsStaff aStaff = new clsStaff();
             Boolean Found = false;
             Boolean Ok = true;
-            String Login = "p2613576";
-            Found = aStaff.Find(Login);
+            Int32 StaffID = 1;
+            Found = aStaff.Find(StaffID);
             if(aStaff.StaffLogin != "p2613576")
             {
                 Ok = false;
@@ -36,9 +36,9 @@ namespace Testing1
             clsStaff aStaff = new clsStaff();
             Boolean Found = false;
             Boolean Ok = true;
-            String Login = "p2613576";
-            Found = aStaff.Find(Login);
-            if (aStaff.DateAdded != Convert.ToDateTime("03/02/2020"))
+            Int32 StaffID = 1;
+            Found = aStaff.Find(StaffID);
+            if (aStaff.DateCreated != Convert.ToDateTime("2/3/2020"))
             {
                 Ok = false;
             }
@@ -52,8 +52,8 @@ namespace Testing1
             clsStaff aStaff = new clsStaff();
             Boolean Found = false;
             Boolean Ok = true;
-            String Password = "123";
-            Found = aStaff.Find(Password);
+            Int32 StaffID = 1;
+            Found = aStaff.Find(StaffID);
             if (aStaff.StaffPassword != "123")
             {
                 Ok = false;
@@ -66,9 +66,9 @@ namespace Testing1
             clsStaff aStaff = new clsStaff();
             Boolean Found = false;
             Boolean Ok = true;
-            String Login = "p2613576";
-            Found = aStaff.Find(Login);
-            if (aStaff.StaffIsAdmin != false)
+            Int32 StaffID = 1;
+            Found = aStaff.Find(StaffID);
+            if (aStaff.StaffIsAdmin != true)
             {
                 Ok = false;
             }
@@ -79,8 +79,8 @@ namespace Testing1
             clsStaff aStaff = new clsStaff();
             Boolean Found = false;
             Boolean Ok = true;
-            String Login = "ppp";
-            Found = aStaff.Find(Login);
+            Int32 StaffID = 1;
+            Found = aStaff.Find(StaffID);
             if (aStaff.StaffEmail != "ppp@gmail.com")
             {
                 Ok = false;
