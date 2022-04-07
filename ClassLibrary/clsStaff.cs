@@ -4,7 +4,7 @@ namespace ClassLibrary
 {
     public class clsStaff
     {
-        private int mStaffID;
+        private int  mStaffID;
         private string Login;
         private DateTime mDateCreated;
         private string Password;
@@ -23,7 +23,7 @@ namespace ClassLibrary
             }
         }
         */
-     
+
         public DateTime DateCreated
         {
             get
@@ -68,7 +68,7 @@ namespace ClassLibrary
                 Login = value;
             }
         }
-            
+
         public string StaffEmail
         {
             get
@@ -86,7 +86,7 @@ namespace ClassLibrary
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@StaffID", StaffID);
             DB.Execute("sproc_tblStaff_FilterByLogin");
-            if(DB.Count == 1)
+            if (DB.Count == 1)
             {
 
                 StaffID = Convert.ToInt32(DB.DataTable.Rows[0]["StaffID"]);
@@ -103,6 +103,57 @@ namespace ClassLibrary
             }
 
 
+        }
+        public String Valid(
+            String StaffID,
+            String Login,
+            String Password,
+            String email,
+            String isAdmin,
+            String DateCreated)
+        {
+            DateTime DateTemp;
+            String error = "";
+            
+            if(StaffID.Length==0)
+            {
+                error += "ID cannot be blank";
+            }
+            if (StaffID.Length >20)
+            {
+                error += "ID cannot be more than 20 characters";
+            }
+            try
+            {
+                DateTemp = Convert.ToDateTime(DateCreated);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    error = error + "The date cannot be in the past : ";
+                }
+
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    error = error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                error = error + "The data was not a valid date : ";
+            }
+           
+                
+                if (Login == "")
+                {
+                    error = error + "Loggin cannot be empty field ";
+                }
+
+                if (Login.Length >50)
+                {
+                    error = error + "Loggin cannot be longer than 50 characters ";
+                }
+            
+            
+            return error;
         }
     }
 }
