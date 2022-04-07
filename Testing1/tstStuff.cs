@@ -7,7 +7,17 @@ namespace Testing1
     [TestClass]
     public class tstStuff
     {
+        string StaffID = "1";
+        string Login = "p2613576";
+        string Password = "1234";
+        string email = "p26@my365.dmu.ac.uk";
+        string isAdmin = "true";
+        string DateCreated = DateTime.Now.Date.ToString();
+
+
+
         [TestMethod]
+
         public void FindMethodOk()
         {
             clsStaff aStaff = new clsStaff();
@@ -144,7 +154,135 @@ namespace Testing1
             aStaff.StaffIsAdmin = TestData;
             Assert.AreEqual(aStaff.StaffIsAdmin, TestData);
         }
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            clsStaff aStaff = new clsStaff();
+            String error = "";
+            error = aStaff.Valid(StaffID, Login, Password, email, isAdmin, DateCreated);
+            Assert.AreEqual(error, "");
+        }
+        [TestMethod]
+        public void StaffIDMinLessOne()
+        {
+            clsStaff aStaff = new clsStaff();
+            String error = "";
+            StaffID = "";
+            error = aStaff.Valid(StaffID, Login, Password, email, isAdmin, DateCreated);
+            Assert.AreNotEqual(error, "");
+        }
+        [TestMethod]
+        public void StaffIDMin()
+        {
+            clsStaff aStaff = new clsStaff();
+            String error = "";
+            string StaffID = "0";
+            error = aStaff.Valid(StaffID, Login, Password, email, isAdmin, DateCreated);
+            Assert.AreEqual(error, "");
+        }
+        [TestMethod]
+        public void StaffIDMinPlusOne()
+        {
+            clsStaff aStaff = new clsStaff();
+            String error = "";
+            string StaffID = "a";
+            error = aStaff.Valid(StaffID, Login, Password, email, isAdmin, DateCreated);
+            Assert.AreEqual(error, "");
+        }
 
+        [TestMethod]
+        public void StaffIDMaxLessOne()
+        {
+            clsStaff aStaff = new clsStaff();
+            String error = "";
+            string StaffID = "aaaaaaaaaaaaaaaaaaa";
+            error = aStaff.Valid(StaffID, Login, Password, email, isAdmin, DateCreated);
+            Assert.AreEqual(error, "");
+        }
+
+        [TestMethod]
+        public void StaffIDMax()
+        {
+            clsStaff aStaff = new clsStaff();
+            String error = "";
+            string StaffID = "aaaaaaaaaaaaaaaaaaaa";
+            error = aStaff.Valid(StaffID, Login, Password, email, isAdmin, DateCreated);
+            Assert.AreEqual(error, "");
+        }
+        [TestMethod]
+        public void DateAddedExtremeMin()
+        {
+            clsStaff aStaff = new clsStaff();
+            String error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(-100);
+            string DateCreated = TestDate.ToString();
+            error = aStaff.Valid(StaffID, Login, Password, email, isAdmin, DateCreated);
+            Assert.AreNotEqual(error, "");
+        }
+
+        [TestMethod]
+        public void DateAddedLessOne()
+        {
+            clsStaff aStaff = new clsStaff();
+            String error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(-1);
+            string DateCreated = TestDate.ToString();
+            error = aStaff.Valid(StaffID, Login, Password, email, isAdmin, DateCreated);
+            Assert.AreNotEqual(error, "");
+        }
+
+        [TestMethod]
+        public void DateAddedMin()
+        {
+            clsStaff aStaff = new clsStaff();
+            String error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            string DateCreated = TestDate.ToString();
+            error = aStaff.Valid(StaffID, Login, Password, email, isAdmin, DateCreated);
+            Assert.AreEqual(error, "");
+        }
+
+        [TestMethod]
+        public void DateAddedMinPlusOne()
+        {
+            clsStaff aStaff = new clsStaff();
+            String error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(1);
+            string DateCreated = TestDate.ToString();
+            error = aStaff.Valid(StaffID, Login, Password, email, isAdmin, DateCreated);
+            Assert.AreNotEqual(error, "");
+        }
+
+        [TestMethod]
+        public void DateAddedExtremeMax()
+        {
+            clsStaff aStaff = new clsStaff();
+            String error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(100);
+            string DateCreated = TestDate.ToString();
+            error = aStaff.Valid(StaffID, Login, Password, email, isAdmin, DateCreated);
+            Assert.AreNotEqual(error, "");
+        }
+
+        [TestMethod]
+        public void DateAddedInvalidData()
+        {
+            clsStaff aStaff = new clsStaff();
+            String error = "";
+            string DateCreated = "this is not a date!";
+            error = aStaff.Valid(StaffID, Login, Password, email, isAdmin, DateCreated);
+            Assert.AreNotEqual(error, "");
+        }
     }
 
 }
+
