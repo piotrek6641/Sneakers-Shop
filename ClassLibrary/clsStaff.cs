@@ -11,18 +11,18 @@ namespace ClassLibrary
         private Boolean isAdmin;
         private string email;
         public bool Active { get; set; }
-        /*public int Id
+        public int StaffID
         {
             get
             {
-                return mId;
+                return mStaffID;
             }
             set
             {
-                mId = value;
+                mStaffID = value;
             }
         }
-        */
+        
 
         public DateTime DateCreated
         {
