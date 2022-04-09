@@ -14,6 +14,8 @@ namespace ClassLibrary
             Int32 RecordCount = 0;
             //object for data connection
             clsDataConnection DB = new clsDataConnection();
+            //
+            DB.Execute("sproc_tblOrdr_SeletAll");
             //execute the stored procedure
             RecordCount = DB.Count;
             //while there are reecords to process

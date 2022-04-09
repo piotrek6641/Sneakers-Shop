@@ -16,9 +16,23 @@ public partial class _1_List : System.Web.UI.Page
         if (IsPostBack == false)
         {
             //update the list box
-            //DisplayOrderss();
+            DisplayOrdrs();
         }
 
+    }
+
+    void DisplayOrdrs()
+    {
+        //create instance of the order collection
+        clsOrderCollection AnOrder = new clsOrderCollection();
+        // set the data source to list of orders in the collection
+        lstOrderList.DataSource = AnOrder.OrdersList;
+        //set the name of the primary key
+        lstOrderList.DataValueField = "OrderId";
+        //set the data field to display
+        lstOrderList.DataTextField = "Statues";
+        //bind the data to the list
+        lstOrderList.DataBind();
     }
 
 
