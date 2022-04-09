@@ -16,9 +16,30 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void StaffOK_Click(object sender, EventArgs e)
     {
         clsStaff AStaff = new clsStaff();
-        AStaff.StaffEmail = TextStaffEmail.Text;
-        Session["AStaff"] = AStaff;
-        Response.Redirect("StaffViewer.aspx");
+        String StaffEmail = TextStaffEmail.Text;
+        String StaffPassword = TextStaffPassword.Text;
+        String StaffID = TextStaffID.Text;
+        String StaffDateCreated = TextDateCreated.Text;
+        String isAdmin = "true";
+        String StaffLogin = "pp";
+        String error = "";
+        
+        error = AStaff.Valid(StaffID, StaffLogin, StaffPassword, StaffEmail, isAdmin, StaffDateCreated);
+        if (error=="")
+        {
+            
+            AStaff.StaffEmail = StaffID;
+            AStaff.StaffPassword = StaffPassword;
+            AStaff.StaffID = Convert.ToInt32(StaffID);
+            AStaff.DateCreated = Convert.ToDateTime(StaffDateCreated);
+            Session["AStaff"] = AStaff;
+            Response.Redirect("StaffViewer.aspx");
+        }
+        else
+        {
+            lblerror1.Text = error;
+        }
+        
         
     }
 
@@ -49,6 +70,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
     }
 
     protected void TextDateCreated_TextChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void TextStaffID_TextChanged(object sender, EventArgs e)
     {
 
     }

@@ -10,7 +10,7 @@
     <form id="form1" runat="server">
         <div>
             <asp:Label ID="StaffID" runat="server" Text="StaffID" width="122px"></asp:Label>
-            <asp:TextBox ID="TextStaffID" runat="server"></asp:TextBox>
+            <asp:TextBox ID="TextStaffID" runat="server" OnTextChanged="TextStaffID_TextChanged"></asp:TextBox>
             <br />
             <asp:Label ID="StaffEmail" runat="server" Text="Email" width="122px"></asp:Label>
             <asp:TextBox ID="TextStaffEmail" runat="server"></asp:TextBox>
@@ -29,6 +29,9 @@
             <asp:Button ID="StaffOK" runat="server" Text="OK" OnClick="StaffOK_Click" />
             <asp:Button ID="StaffCancel" runat="server" Text="Cancel" />
             <asp:Button ID="Find" runat="server" Text="Find" OnClick="btn_Find_Click" />
+             <asp:Label ID="lblerror" runat="server" Text="error" width="122px"></asp:Label>
+            <asp:TextBox ID="lblerror1" runat="server"></asp:TextBox>
+
         </div>
     </form>
 </body>
