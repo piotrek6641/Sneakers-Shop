@@ -8,6 +8,25 @@ namespace Test_Framework
     [TestClass]
     public class tstStaffCollection
     {
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            clsStaffCollection AllStaff = new clsStaffCollection();
+            clsStaff TestItem = new clsStaff();
+            Int32 PrimaryKey = 0;
+            TestItem.StaffID = 1;
+            TestItem.StaffEmail = "p21561@gmail.com";
+            TestItem.StaffIsAdmin = true;
+            TestItem.StaffLogin = "123";
+            TestItem.StaffPassword = "asd123";
+            TestItem.DateCreated = DateTime.Now.Date;
+            AllStaff.ThisStaff = TestItem;
+            PrimaryKey = AllStaff.Add();
+            TestItem.StaffID = PrimaryKey;
+            AllStaff.ThisStaff.Find(PrimaryKey);
+            Assert.AreEqual(AllStaff.ThisStaff, TestItem);
+
+        }
 
         [TestMethod]
         public void TestMethod1()

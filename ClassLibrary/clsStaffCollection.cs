@@ -6,11 +6,14 @@ namespace ClassLibrary
     public class clsStaffCollection
     {
 
+        clsStaff mThisStaff = new clsStaff();
         List<clsStaff> mStaffList = new List<clsStaff>();
+
         public clsStaffCollection()
         {
             Int32 Index = 0;
             Int32 RecordCount = 0;
+           
             clsDataConnection DB = new clsDataConnection();
             DB.Execute("sproc_tblStaff_SelectAll");
             RecordCount = DB.Count;
@@ -28,6 +31,12 @@ namespace ClassLibrary
             }
 
 
+        }
+
+        public int Add()
+        {
+            mThisStaff.StaffID = 12;
+            return mThisStaff.StaffID;
         }
 
         public List<clsStaff> StaffList
@@ -50,6 +59,17 @@ namespace ClassLibrary
             set
             {
 
+            }
+        }
+        public clsStaff ThisStaff
+        {
+            get
+                {
+                return mThisStaff;
+            }
+            set
+                {
+                mThisStaff = value;
             }
         }
 
