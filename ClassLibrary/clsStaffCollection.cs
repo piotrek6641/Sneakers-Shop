@@ -11,12 +11,20 @@ namespace ClassLibrary
 
         public clsStaffCollection()
         {
-            Int32 Index = 0;
-            Int32 RecordCount = 0;
-           
             clsDataConnection DB = new clsDataConnection();
             DB.Execute("sproc_tblStaff_SelectAll");
+            PopulateArray(DB);
+
+
+        }
+        void PopulateArray(clsDataConnection DB)
+        {
+            Int32 Index = 0;
+            Int32 RecordCount = 0;
+
+            
             RecordCount = DB.Count;
+            mStaffList = new List<clsStaff>();
             while (Index < RecordCount)
             {
                 clsStaff AStaff = new clsStaff();
@@ -29,14 +37,32 @@ namespace ClassLibrary
                 mStaffList.Add(AStaff);
                 Index++;
             }
-
-
         }
-
         public int Add()
         {
-            mThisStaff.StaffID = 12;
-            return mThisStaff.StaffID;
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@StaffID", mThisStaff.StaffID);
+            DB.AddParameter("@StaffEmail", mThisStaff.StaffEmail);
+            DB.AddParameter("@Login", mThisStaff.StaffLogin);
+            DB.AddParameter("@Password", mThisStaff.StaffPassword);
+            DB.AddParameter("@isAdmin", mThisStaff.StaffIsAdmin);
+            DB.AddParameter("@DateCreated", mThisStaff.DateCreated);
+            return DB.Execute("sproc_tblStaff_Insert");
+        }
+
+        public void delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("StaffID", mThisStaff.StaffID);
+            DB.Execute("sproc_tblStaff_Delete");
+        }
+
+        public void ReportByLogin(String Login)
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@login", Login);
+            DB.Execute("sproc_tblStaff_FilterByLogin");
+            PopulateArray(DB);
         }
 
         public List<clsStaff> StaffList
@@ -50,6 +76,19 @@ namespace ClassLibrary
                 mStaffList = value;
             }
         }
+
+        public void Update()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@StaffID", mThisStaff.StaffID);
+            DB.AddParameter("@StaffEmail", mThisStaff.StaffEmail);
+            DB.AddParameter("@Login", mThisStaff.StaffLogin);
+            DB.AddParameter("@Password", mThisStaff.StaffPassword);
+            DB.AddParameter("@isAdmin", mThisStaff.StaffIsAdmin);
+            DB.AddParameter("@DateCreated", mThisStaff.DateCreated);
+            DB.Execute("sproc_tblStaff_Update");
+        }
+
         public int Count
         {
             get
