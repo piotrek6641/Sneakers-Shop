@@ -15,6 +15,9 @@
             <asp:Label ID="StaffEmail" runat="server" Text="Email" width="122px"></asp:Label>
             <asp:TextBox ID="TextStaffEmail" runat="server"></asp:TextBox>
             <br />
+             <asp:Label ID="Login" runat="server" Text="Login"></asp:Label>
+            <asp:TextBox ID="TextStaffLogin" runat="server" OnTextChanged="TextDateCreated_TextChanged"></asp:TextBox>
+            <br />
             <asp:Label ID="StaffPassword" runat="server" Text="Password" width="122px"></asp:Label>
             <asp:TextBox ID="TextStaffPassword" runat="server"></asp:TextBox>
             <br />
@@ -28,7 +31,7 @@
             
             <asp:Button ID="StaffOK" runat="server" Text="OK" OnClick="StaffOK_Click" />
             <asp:Button ID="StaffCancel" runat="server" Text="Cancel" />
-            <asp:Button ID="Find" runat="server" Text="Find" OnClick="btn_Find_Click" />
+            <asp:Button ID="Find" runat="server" Text="Find" OnClick="btn_Find_Click" style="height: 26px" />
              <asp:Label ID="lblerror" runat="server" Text="error" width="122px"></asp:Label>
             <asp:TextBox ID="lblerror1" runat="server"></asp:TextBox>
 
