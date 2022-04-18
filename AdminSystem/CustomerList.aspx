@@ -7,6 +7,21 @@
     <title></title>
 </head>
 <body>
+    <form id="form2" runat="server">
+        <div>
+        </div>
+        <asp:ListBox ID="lstCustomerList" runat="server" Height="150px" Width="244px"></asp:ListBox>
+        <p>
+            <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="Add" />
+        </p>
+        <p>
+            Enter customer name
+            <asp:TextBox ID="txtFilter" runat="server"></asp:TextBox>
+        </p>
+        <p>
+            &nbsp;</p>
+        <asp:Label ID="lblError" runat="server"></asp:Label>
+    </form>
     <form id="form1" runat="server">
         <div>
         </div>
