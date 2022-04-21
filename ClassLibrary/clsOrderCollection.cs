@@ -5,6 +5,52 @@ namespace ClassLibrary
 {
     public class clsOrderCollection
     {
+        //private data member for list 
+        List<clsOrder> mOrderList = new List<clsOrder>();
+        //private data member for thisorder
+        clsOrder mThisOrder = new clsOrder();
+
+        public clsOrder ThisOrder
+        {
+            get
+            {
+                return mThisOrder;
+            }
+            set
+            {
+                mThisOrder = value;
+            }
+        }
+
+
+        //public property for the address list
+        public List<clsOrder> OrdersList
+        {
+            get
+            {
+                //return the private data
+                return mOrderList;
+            }
+            set
+            {
+                //set the private data
+                mOrderList = value;
+            }
+        }
+
+        public int Count
+        {
+            get
+            {
+                //return the private data
+                return mOrderList.Count;
+            }
+            set
+            {
+                //set the private data
+
+            }
+        }
         //constructor for the class
         public clsOrderCollection()
         {
@@ -35,39 +81,21 @@ namespace ClassLibrary
                 Index++;
             }
         }
-        //private data member for the list
-        List<clsOrder> mOrderList = new List<clsOrder>();
+        
 
-        //public property for the address list
-        public List<clsOrder> OrdersList
-        {
-            get
-            {
-                //return the private data
-                return mOrderList;
-            }
-            set
-            {
-                //set the private data
-                mOrderList = value;
-            }
-        }
 
-        public int Count
+
+
+        public int Add()
         {
-            get
-            {
-                //return the private data
-                return mOrderList.Count ;
-            }
-            set
-            {
-                //set the private data
-                
-            }
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@OrderStatues", mThisOrder.Statues);
+            DB.AddParameter("@Date", mThisOrder.DateAdded);
+            return DB.Execute("sproc_TblOrder_Insert");
+            //mThisOrder.OrderId = 3;
+            //return mThisOrder.OrderId;
         }
 
 
-        public clsOrder ThisOrder { get; set; }
     }
 }
