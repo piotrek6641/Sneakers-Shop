@@ -89,6 +89,61 @@ namespace Testing2
             Assert.AreEqual(AllOrders.Count , TestList.Count );
         }
 
+        //[TestMethod]
+        //public void AddMethodOK()
+        //{
+        //    clsOrderCollection AllOrders = new clsOrderCollection();
+        //    clsOrder TestItem = new clsOrder();
+        //    Int32 PrimaryKey = 0;
+        //    TestItem.CustomerId = 5;
+        //    TestItem.Statues = 0;
+        //    TestItem.DateAdded = DateTime.Now.Date;
+        //    TestItem.StaffId = 4;
+        //    AllOrders.ThisOrder = TestItem;
+        //    PrimaryKey = AllOrders.Add();
+        //    TestItem.OrderId = PrimaryKey;
+        //    AllOrders.ThisOrder.Find(PrimaryKey);
+        //    Assert.AreEqual(AllOrders.ThisOrder, TestItem);
+        //}
+
+
+        //[TestMethod]
+        //public void DeleteMethodOK()
+        //{
+        //    clsOrderCollection AllOrders = new clsOrderCollection();
+        //    clsOrder TestItem = new clsOrder();
+        //    Int32 PrimaryKey = 0;
+        //    TestItem.CustomerId = 5;
+        //    TestItem.Statues = 0;
+        //    TestItem.DateAdded = DateTime.Now.Date;
+        //    TestItem.StaffId = 4;
+        //    AllOrders.ThisOrder = TestItem;
+        //    PrimaryKey = AllOrders.Add();
+        //    TestItem.OrderId = PrimaryKey;
+        //    AllOrders.ThisOrder.Find(PrimaryKey);
+        //    Assert.AreEqual(AllOrders.ThisOrder, TestItem);
+        //}
+
+
+        //[TestMethod]
+        //public void UpdateMethodOK()
+        //{
+        //    clsOrderCollection AllOrders = new clsOrderCollection();
+        //    clsOrder TestItem = new clsOrder();
+        //    Int32 PrimaryKey = 0;
+        //    TestItem.CustomerId = 5;
+        //    TestItem.Statues = 0;
+        //    TestItem.DateAdded = DateTime.Now.Date;
+        //    TestItem.StaffId = 4;
+        //    AllOrders.ThisOrder = TestItem;
+        //    PrimaryKey = AllOrders.Add();
+        //    TestItem.OrderId = PrimaryKey;
+        //    AllOrders.ThisOrder.Find(PrimaryKey);
+        //    Assert.AreEqual(AllOrders.ThisOrder, TestItem);
+        //}
+
+
+
 
     }
 }
