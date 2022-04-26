@@ -89,13 +89,23 @@ namespace ClassLibrary
         public int Add()
         {
             clsDataConnection DB = new clsDataConnection();
+            //DB.AddParameter("@CustomerId", mThisOrder.CustomerId);
             DB.AddParameter("@OrderStatues", mThisOrder.Statues);
             DB.AddParameter("@Date", mThisOrder.DateAdded);
-            return DB.Execute("sproc_TblOrder_Insert");
-            //mThisOrder.OrderId = 3;
-            //return mThisOrder.OrderId;
+           //DB.AddParameter("@StaffId", mThisOrder.StaffId);
+            return DB.Execute("sproc_TblOrdr_Insert");
+            
         }
 
-
+        public void Update()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@OrderId", mThisOrder.OrderId);
+            DB.AddParameter("@CustomerId", mThisOrder.CustomerId);
+            DB.AddParameter("@OrderStatues", mThisOrder.Statues);
+            DB.AddParameter("@DateAdded", mThisOrder.DateAdded);
+            DB.AddParameter("@StaffId", mThisOrder.StaffId);
+            DB.Execute("sproc_TblOrdr_Update");
+        }
     }
 }
