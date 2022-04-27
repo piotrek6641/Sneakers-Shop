@@ -54,32 +54,13 @@ namespace ClassLibrary
         //constructor for the class
         public clsOrderCollection()
         {
-            //var for the index
-            Int32 Index = 0;
-            //var to store the record count
-            Int32 RecordCount = 0;
+
             //object for data connection
             clsDataConnection DB = new clsDataConnection();
             //
             DB.Execute("sproc_tblOrdr_SeletAll");
-            //execute the stored procedure
-            RecordCount = DB.Count;
-            //while there are reecords to process
-            while (Index < RecordCount)
-            {
-                //create a blank order
-                clsOrder AnOrder = new clsOrder();
-                //read in the fields from the current record
-                AnOrder.OrderId = Convert.ToInt32(DB.DataTable.Rows[0]["OrderId"]);
-                AnOrder.CustomerId = Convert.ToInt32(DB.DataTable.Rows[Index]["CustomerId"]);
-                AnOrder.Statues = Convert.ToByte(DB.DataTable.Rows[Index]["OrderStatues"]);
-                AnOrder.DateAdded = Convert.ToDateTime(DB.DataTable.Rows[Index]["Date"]);
-                AnOrder.StaffId = Convert.ToInt32(DB.DataTable.Rows[Index]["StaffId"]);
-                //add the record to the private data member
-                mOrderList.Add(AnOrder);
-                //point at the next record
-                Index++;
-            }
+            PopulateArray(DB);
+
         }
         
 
@@ -106,6 +87,51 @@ namespace ClassLibrary
             DB.AddParameter("@DateAdded", mThisOrder.DateAdded);
             DB.AddParameter("@StaffId", mThisOrder.StaffId);
             DB.Execute("sproc_TblOrdr_Update");
+        }
+
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@OrderId", mThisOrder.OrderId);
+            DB.Execute("sproc_TblOrdr_Delete");
+        }
+
+        public void ReportByStatues(string Statues)
+        {
+            //Byte StatuesTemp;
+            //clsOrderCollection FilteredOrders = new clsOrderCollection();
+            //StatuesTemp = Convert.ToByte(Statues);
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@Statues", Statues);
+            DB.Execute("sproc_TblOrdr_FilterByStatues");
+            PopulateArray(DB);
+        }
+
+        void PopulateArray(clsDataConnection DB)
+        {
+            //var for the index
+            Int32 Index = 0;
+            //var to store the record count
+            Int32 RecordCount;
+            //execute the stored procedure
+            RecordCount = DB.Count;
+            mOrderList = new List<clsOrder>();
+            //while there are reecords to process
+            while (Index < RecordCount)
+            {
+                //create a blank order
+                clsOrder AnOrder = new clsOrder();
+                //read in the fields from the current record
+                AnOrder.OrderId = Convert.ToInt32(DB.DataTable.Rows[0]["OrderId"]);
+                AnOrder.CustomerId = Convert.ToInt32(DB.DataTable.Rows[Index]["CustomerId"]);
+                AnOrder.Statues = Convert.ToByte(DB.DataTable.Rows[Index]["OrderStatues"]);
+                AnOrder.DateAdded = Convert.ToDateTime(DB.DataTable.Rows[Index]["Date"]);
+                AnOrder.StaffId = Convert.ToInt32(DB.DataTable.Rows[Index]["StaffId"]);
+                //add the record to the private data member
+                mOrderList.Add(AnOrder);
+                //point at the next record
+                Index++;
+            }
         }
     }
 }
