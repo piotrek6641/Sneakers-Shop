@@ -32,8 +32,8 @@ namespace Testing2
             //set its properties
             TestItem.OrderId = 1;
             TestItem.CustomerId = 9;
-            TestItem.DateAdded  = DateTime.Now.Date;
-            TestItem.Statues  = 0;
+            TestItem.DateAdded = DateTime.Now.Date;
+            TestItem.Statues = 0;
             TestItem.StaffId = 4;
             //add the item to the test list
             TestList.Add(TestItem);
@@ -86,7 +86,7 @@ namespace Testing2
             //assign the data to the property
             AllOrders.OrdersList = TestList;
             //test to see that the two value are the samae
-            Assert.AreEqual(AllOrders.Count , TestList.Count );
+            Assert.AreEqual(AllOrders.Count, TestList.Count);
         }
 
         [TestMethod]
@@ -127,7 +127,7 @@ namespace Testing2
 
         [TestMethod]
         public void UpdateMethodOK()
-        
+
         {
             clsOrderCollection AllOrders = new clsOrderCollection();
             clsOrder TestItem = new clsOrder();
@@ -138,7 +138,7 @@ namespace Testing2
             TestItem.StaffId = 4;
             AllOrders.ThisOrder = TestItem;
             PrimaryKey = AllOrders.Add();
-        
+
             TestItem.OrderId = PrimaryKey;
             TestItem.CustomerId = 1;
             TestItem.Statues = 2;
@@ -148,13 +148,74 @@ namespace Testing2
             AllOrders.Update();
 
             AllOrders.ThisOrder.Find(PrimaryKey);
-            
+
 
             Assert.AreEqual(AllOrders.ThisOrder, TestItem);
         }
 
 
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            clsOrder TestItem = new clsOrder();
+            Int32 PrimaryKey = 0;
+            TestItem.CustomerId = 5;
+            TestItem.Statues = 0;
+            TestItem.DateAdded = DateTime.Now.Date;
+            TestItem.StaffId = 4;
+            AllOrders.ThisOrder = TestItem;
+            PrimaryKey = AllOrders.Add();
 
+            TestItem.OrderId = PrimaryKey;
+            AllOrders.ThisOrder.Find(PrimaryKey);
+            AllOrders.Delete();
+            Boolean Found = AllOrders.ThisOrder.Find(PrimaryKey);
 
+            Assert.IsFalse(Found);
+        }
+
+        [TestMethod]
+        public void ReportByStatuesMethodOK()
+        {
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+            FilteredOrders.ReportByStatues("");
+            Assert.AreEqual(AllOrders.Count, FilteredOrders.Count);
+        }
+
+        [TestMethod]
+        public void ReportByStatuesNoneFound()
+        {
+            clsOrderCollection FilteredOrder = new clsOrderCollection();
+            FilteredOrder.ReportByStatues("3");
+            Assert.AreEqual(0, FilteredOrder.Count);
+        }
+
+        [TestMethod]
+        public void ReportByStatuesTestDataFound()
+        {
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+            Boolean OK = true;
+            FilteredOrders.ReportByStatues("3");
+            if (FilteredOrders.Count == 2)
+            {
+                if (FilteredOrders.OrdersList[0].OrderId != 1)
+                {
+                    OK = false;
+                }
+                if (FilteredOrders.OrdersList[1].OrderId != 23)
+                {
+                    OK = false;
+
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
     }
 }
