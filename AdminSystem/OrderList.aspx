@@ -8,23 +8,29 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
+        <div aria-selected="undefined" aria-sort="none">
             <br />
+            &nbsp;&nbsp;
             <asp:ListBox ID="lstOrderList" runat="server" Height="307px" Width="327px"></asp:ListBox>
             <br />
-            <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="Add" />
-            <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" Text="Edit" />
-            <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" Text="Delete" />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="Add" BorderStyle="Outset" />
+            &nbsp;&nbsp;
+            <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" Text="Edit" BorderStyle="Outset" />
+            &nbsp;&nbsp;&nbsp;
+            <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" Text="Delete" BorderStyle="Outset" />
             <br />
             <br />
             <br />
             <br />
-            Enter Order Statues
-            <asp:TextBox ID="txtFilter" runat="server"></asp:TextBox>
+            Enter Order Statues:&nbsp;
+            <asp:TextBox ID="txtFilter" runat="server" BorderStyle="Outset"></asp:TextBox>
+            &nbsp;<br />
+            [0 = Not Processed, 1 = Shipped, 2 = Furfilled]<br />
             <br />
-            <br />
-            <asp:Button ID="btnApply" runat="server" BorderStyle="Double" OnClick="btnApply_Click" Text="Apply" />
-            <asp:Button ID="btnClear" runat="server" BorderStyle="Double" OnClick="btnClear_Click" Text="Clear" />
+            &nbsp;<asp:Button ID="btnApply" runat="server" BorderStyle="Outset" OnClick="btnApply_Click" Text="Apply" />
+            &nbsp;
+            <asp:Button ID="btnClear" runat="server" BorderStyle="Outset" OnClick="btnClear_Click" Text="Clear" />
         </div>
         <p>
             <asp:Label ID="lblError" runat="server" Text="[lblError]"></asp:Label>

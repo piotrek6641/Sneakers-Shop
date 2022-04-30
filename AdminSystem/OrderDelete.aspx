@@ -11,8 +11,10 @@
         <div>
             <asp:Label ID="lblConfirmation" runat="server" Text="Are you sure you want to delete this record?"></asp:Label>
             <br />
-            <asp:Button ID="btnyes" runat="server" OnClick="btnyes_Click" Text="Yes" />
-            <asp:Button ID="btnNo" runat="server" Text="No" />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Button ID="btnyes" runat="server" OnClick="btnyes_Click" Text="Yes" BorderStyle="Outset" />
+            &nbsp;<asp:Button ID="btnNo" runat="server" Text="No" BorderStyle="Outset" OnClick="btnNo_Click" />
         </div>
     </form>
 </body>

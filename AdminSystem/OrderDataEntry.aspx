@@ -11,7 +11,7 @@
         <asp:Label ID="lblOrderId" runat="server" Text="Order Id"></asp:Label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:TextBox ID="txtOrderId" runat="server"></asp:TextBox>
-        <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Find" />
+        &nbsp;<asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Find" BorderStyle="Outset" />
         <br />
         <asp:Label ID="lblCustomerId" runat="server" Text="Customer Id"></asp:Label>
 &nbsp;&nbsp;
@@ -29,15 +29,12 @@
         <asp:TextBox ID="txtStaffId" runat="server"></asp:TextBox>
         <br />
         <br />
-        <asp:CheckBox ID="chkActive" runat="server" Text="Active" />
+        &nbsp;<asp:Label ID="lblError" runat="server"></asp:Label>
         <br />
         <br />
-        <asp:Label ID="lblError" runat="server"></asp:Label>
-        <br />
-        <br />
-        <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" Text="OK" />
+        &nbsp;<asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" Text="OK" BorderStyle="Outset" />
 &nbsp;
-        <asp:Button ID="btnCancel" runat="server" Text="Cancel" />
+        <asp:Button ID="btnCancel" runat="server" Text="Cancel" BorderStyle="Outset" />
     </form>
 </body>
 </html>

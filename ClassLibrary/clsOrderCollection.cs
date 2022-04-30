@@ -98,11 +98,11 @@ namespace ClassLibrary
 
         public void ReportByStatues(string Statues)
         {
-            //Byte StatuesTemp;
+            Byte StatuesTemp;
             //clsOrderCollection FilteredOrders = new clsOrderCollection();
-            //StatuesTemp = Convert.ToByte(Statues);
+            StatuesTemp = Convert.ToByte(Statues);
             clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("@Statues", Statues);
+            DB.AddParameter("@Statues", StatuesTemp);
             DB.Execute("sproc_TblOrdr_FilterByStatues");
             PopulateArray(DB);
         }
