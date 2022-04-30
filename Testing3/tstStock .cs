@@ -99,7 +99,7 @@ namespace Testing3
             Boolean OK = true;
             Int32 SneakerNo = 3;
             Found = AStock.Find(SneakerNo);
-            if (AStock.DateAdded != Convert.ToDateTime("06-02-2022"))
+            if (AStock.DateAdded != Convert.ToDateTime("25-04-2022"))
             {
                 OK = false;
             }
@@ -144,7 +144,7 @@ namespace Testing3
             Boolean OK = true;
             Int32 SneakerNo = 3;
             Found = AStock.Find(SneakerNo);
-            if (AStock.SneakerName != "Smthn")
+            if (AStock.SneakerName != "Crocs")
             {
                 OK = false;
             }
