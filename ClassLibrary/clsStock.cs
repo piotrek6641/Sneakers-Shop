@@ -95,12 +95,12 @@ namespace ClassLibrary
 
             if (sneakerName.Length == 0)
             {
-                Error = Error + "The sneaker no may no be blank : ";
+                Error = Error + "The sneaker name may no be blank : ";
             }
 
             if(sneakerName.Length > 20)
             {
-                Error = Error + "The sneakerNo must be less than 6 characters : ";
+                Error = Error + "The sneaker name must be less than 20 characters : ";
             }
 
             try
