@@ -136,7 +136,7 @@ namespace ClassLibrary
             CustomerIdTemp = Convert.ToInt32(customerId);
             if (CustomerIdTemp < 1)
             {
-                Error = Error + "customer id invalid: ";
+                Error = Error + "Customer id invalid: ";
             }
             StaffIdTemp = Convert.ToInt32(staffId);
             if (StaffIdTemp < 1)
@@ -178,7 +178,7 @@ namespace ClassLibrary
             catch
             {
                 //record the error
-                Error = Error + "The datewas not a valid date:  ";
+                Error = Error + "The date was not a valid date:  ";
             }
             //return any error message
             return Error;
