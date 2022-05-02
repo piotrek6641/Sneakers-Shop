@@ -78,7 +78,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             //add the new record
             //OrderList.Add();
             //redirect to the viewer page
-            Response.Write("OrderViewer.aspx");
+            Response.Redirect("OrderList.aspx");
         }
         else
         {
