@@ -162,7 +162,7 @@ namespace Testing5
 			Boolean OK = true;
 			Int32 Customerid = 2;
 			Found = AnCustomers.Find(Customerid);
-			if (AnCustomers.DateAdded !=Convert.ToDateTime("2/10/2022"))
+			if (AnCustomers.DateAdded !=Convert.ToDateTime("10/2/2022"))
 			{
 				OK = false;
 
