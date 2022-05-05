@@ -27,13 +27,14 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         clsCustomersCollection CustomerBook = new clsCustomersCollection();
         CustomerBook.ThisCustomer.Find(Customerid);
-
+/*
         txtCustomerid.Text = CustomerBook.ThisCustomer.Customerid.ToString();
         txtCustomer_email.Text = CustomerBook.ThisCustomer.Customer_email;
         txtDateAdded.Text = CustomerBook.ThisCustomer.DateAdded.ToString();
         txtAddress.Text = CustomerBook.ThisCustomer.Address.ToString();
         txtPhone.Text = CustomerBook.ThisCustomer.Phone.ToString();
         chkSpecialoffers.Checked = CustomerBook.ThisCustomer.Specialoffers;
+*/
     }
 
     protected void btnOK_Click(object sender, EventArgs e)

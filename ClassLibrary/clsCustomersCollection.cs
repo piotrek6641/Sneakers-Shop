@@ -99,6 +99,21 @@ namespace ClassLibrary
 
             DB.Execute("sproc_tblCustomer_Update");
         }
+
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@Customerid", mThisCustomer.Customerid);
+            DB.Execute("sproc_tblCustomer_Delete");
+        }
+
+        public void ReportByCustomerEmail(string Customer_email)
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@Customer_email", Customer_email);
+            DB.Execute("sproc_tblStock_FilterByCustomer_email");
+
+        }
     }
     }
 

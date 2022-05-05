@@ -120,9 +120,9 @@ namespace Testing5
 
             TestItem.Specialoffers = true;
             TestItem.Customerid = 2;
-            TestItem.Customer_email = "bartosh@gmail.com";
+            TestItem.Customer_email = "bary@gmail.com";
             TestItem.Address = "Leicesterle15pxpeacocklane99";
-            TestItem.Phone = "07890575499";
+            TestItem.Phone = "07890575412";
             TestItem.DateAdded = DateTime.Now.Date;
             AllCustomers.ThisCustomer = TestItem;
             AllCustomers.Update();
@@ -130,6 +130,43 @@ namespace Testing5
 
             Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
         }
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            clsCustomersCollection AllCustomers = new clsCustomersCollection();
 
+            clsCustomers TestItem = new clsCustomers();
+            Int32 PrimaryKey = 0;
+
+            TestItem.Specialoffers = true;
+            TestItem.Customerid = 2;
+            TestItem.Customer_email = "bartosh@gmail.com";
+            TestItem.Address = "Leicesterle15pxpeacocklane99";
+            TestItem.Phone = "07890575499";
+            TestItem.DateAdded = DateTime.Now.Date;
+
+            AllCustomers.ThisCustomer = TestItem;
+            PrimaryKey = AllCustomers.Add();
+
+            TestItem.Customerid = PrimaryKey;
+
+            TestItem.Customerid = PrimaryKey;
+
+            AllCustomers.Delete();
+
+            Boolean Found = AllCustomers.ThisCustomer.Find(PrimaryKey);
+
+            Assert.IsFalse(Found);
+        }
+        [TestMethod]
+        public void ReportByCustomer_emailOK()
+        {
+            clsCustomersCollection AllCustomers = new clsCustomersCollection();
+            clsCustomersCollection FilteredCustomer = new clsCustomersCollection();
+
+            FilteredCustomer.ReportByCustomerEmail("");
+            Assert.AreEqual(AllCustomers.Count, FilteredCustomer.Count);
+
+        }
     }
 }
