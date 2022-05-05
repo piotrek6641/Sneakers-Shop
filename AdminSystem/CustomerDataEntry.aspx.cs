@@ -12,8 +12,28 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-       
-        
+        Customerid = Convert.ToInt32(Session["Customerid"]);
+        if (IsPostBack == false)
+        {
+            if (Customerid != -1)
+            {
+                DisplayCustomer();
+            }
+        }
+
+    }
+
+    private void DisplayCustomer()
+    {
+        clsCustomersCollection CustomerBook = new clsCustomersCollection();
+        CustomerBook.ThisCustomer.Find(Customerid);
+
+        txtCustomerid.Text = CustomerBook.ThisCustomer.Customerid.ToString();
+        txtCustomer_email.Text = CustomerBook.ThisCustomer.Customer_email;
+        txtDateAdded.Text = CustomerBook.ThisCustomer.DateAdded.ToString();
+        txtAddress.Text = CustomerBook.ThisCustomer.Address.ToString();
+        txtPhone.Text = CustomerBook.ThisCustomer.Phone.ToString();
+        chkSpecialoffers.Checked = CustomerBook.ThisCustomer.Specialoffers;
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
@@ -38,14 +58,26 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnCustomers.Phone = Phone;
 
 
-            //store the address in the session object
-            Session["AnCustomers"] = AnCustomers;
-            //navigate to the viewer page
-            Response.Redirect("CustomerViewer.aspx");
+            clsCustomersCollection CustomerList = new clsCustomersCollection();
+
+            if (Customerid == -1)
+            {
+                CustomerList.ThisCustomer = AnCustomers;
+                CustomerList.Add();
+            }
+            else
+            {
+                CustomerList.ThisCustomer.Find(Customerid);
+                CustomerList.ThisCustomer = AnCustomers;
+                CustomerList.Update();
+            }
+
+            Response.Redirect("CustomerList.aspx");
         }
         else
-        { 
-        lblError.Text = Error;
+        {
+            //display the error message
+            lblError.Text = Error;
         }
     }
     protected void btnFind_Click(object sender, EventArgs e)

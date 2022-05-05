@@ -98,6 +98,38 @@ namespace Testing5
 
             Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
         }
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            clsCustomersCollection AllCustomers = new clsCustomersCollection();
+
+            clsCustomers TestItem = new clsCustomers();
+            Int32 PrimaryKey = 0;
+
+            TestItem.Specialoffers = true;
+            TestItem.Customerid = 2;
+            TestItem.Customer_email = "bartosh@gmail.com";
+            TestItem.Address = "Leicesterle15pxpeacocklane99";
+            TestItem.Phone = "07890575499";
+            TestItem.DateAdded = DateTime.Now.Date;
+
+            AllCustomers.ThisCustomer = TestItem;
+            PrimaryKey = AllCustomers.Add();
+
+            TestItem.Customerid = PrimaryKey;
+
+            TestItem.Specialoffers = true;
+            TestItem.Customerid = 2;
+            TestItem.Customer_email = "bartosh@gmail.com";
+            TestItem.Address = "Leicesterle15pxpeacocklane99";
+            TestItem.Phone = "07890575499";
+            TestItem.DateAdded = DateTime.Now.Date;
+            AllCustomers.ThisCustomer = TestItem;
+            AllCustomers.Update();
+            AllCustomers.ThisCustomer.Find(PrimaryKey);
+
+            Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
+        }
 
     }
 }
