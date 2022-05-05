@@ -13,6 +13,7 @@
         <asp:ListBox ID="lstCustomerList" runat="server" Height="150px" Width="244px"></asp:ListBox>
         <p>
             <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="Add" />
+            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Edit" Width="37px" />
         </p>
         <p>
             Enter customer name
