@@ -9,7 +9,40 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            <asp:Label ID="lblSupplierID" runat="server" Text="Supplier ID" width="87px"></asp:Label>
+&nbsp;
+            <asp:TextBox ID="txtSupplierID" runat="server"></asp:TextBox>
+            <br />
+            <asp:Label ID="lblSupplierEmail" runat="server" Text="Supplier Email" width="87px"></asp:Label>
+&nbsp;
+            <asp:TextBox ID="txtSupplierEmail" runat="server"></asp:TextBox>
+            <br />
+            <asp:Label ID="lblAddress" runat="server" Text="Address" width="87px"></asp:Label>
+&nbsp;
+            <asp:TextBox ID="txtAddress" runat="server"></asp:TextBox>
+            <br />
+            <asp:Label ID="lblPhoneNo" runat="server" Text="PhoneNo" width="87px"></asp:Label>
+&nbsp;
+            <asp:TextBox ID="txtPhoneNo" runat="server"></asp:TextBox>
+            <br />
+            <asp:Label ID="lblStockAmount" runat="server" Text="Stock Amount" width="87px"></asp:Label>
+&nbsp;
+            <asp:TextBox ID="txtStockAmount" runat="server"></asp:TextBox>
+            <br />
+            <asp:Label ID="lblDeliveryDate" runat="server" Text="Delivery Date" width="87px"></asp:Label>
+&nbsp;
+            <asp:TextBox ID="txtDeliveryDate" runat="server"></asp:TextBox>
+            <br />
+            <br />
+            <asp:CheckBox ID="chkInstock" runat="server" Text="In stock" />
+            <br />
         </div>
+        <asp:Label ID="lblError" runat="server"></asp:Label>
+        <br />
+        <br />
+        <asp:Button ID="btnOk" runat="server" OnClick="btnOk_Click" Text="OK" />
+&nbsp;<asp:Button ID="btnCancel" runat="server" Text="Cancel" />
+        <br />
     </form>
 </body>
 </html>

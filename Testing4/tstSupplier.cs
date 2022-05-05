@@ -14,6 +14,14 @@ namespace Testing4
             Assert.IsNotNull(AnSupplier);
         }
 
+        public void SupplierIDProperties()
+        {
+            clsSupplier AnSupplier = new clsSupplier();
+            Int32 TestData = 532123;
+            AnSupplier.SupplierID = TestData;
+            Assert.AreEqual(AnSupplier.SupplierID, TestData);
+        }
+
         public void InStockProperties()
         {
             clsSupplier AnSupplier = new clsSupplier();
@@ -37,12 +45,12 @@ namespace Testing4
             Assert.AreEqual(AnSupplier.SupplierEmail, TestData);
         }
 
-        public void HomeAddressProperties()
+        public void AddressProperties()
         {
             clsSupplier AnSupplier = new clsSupplier();
             string TestData = "6 new street";
-            AnSupplier.HomeAddress = TestData;
-            Assert.AreEqual(AnSupplier.HomeAddress, TestData);
+            AnSupplier.Address = TestData;
+            Assert.AreEqual(AnSupplier.Address, TestData);
         }
 
         public void PhoneNoProperties()
