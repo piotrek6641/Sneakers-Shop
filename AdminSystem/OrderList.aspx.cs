@@ -93,11 +93,6 @@ public partial class _1_List : System.Web.UI.Page
     protected void btnClear_Click(object sender, EventArgs e)
     {
         clsOrderCollection Orders = new clsOrderCollection();
-        Orders.ReportByStatues("");
         txtFilter.Text = "";
-        lstOrderList.DataSource = Orders.OrdersList;
-        lstOrderList.DataValueField = "OrderId";
-        lstOrderList.DataTextField = "Statues";
-        lstOrderList.DataBind();
     }
 }
