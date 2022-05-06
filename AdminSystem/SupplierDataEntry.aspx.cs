@@ -16,9 +16,28 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void btnOk_Click(object sender, EventArgs e)
     {
         clsSupplier AnSupplier = new clsSupplier();
-        AnSupplier.SupplierEmail = txtSupplierEmail.Text;
-        Session["AnSupplier"] = AnSupplier;
-        Response.Redirect("SupplierViewer.aspx");
+        string SupplierEmail = txtSupplierEmail.Text;
+        string Address = txtAddress.Text;
+        string StockAmount = txtStockAmount.Text;
+        string PhoneNo = txtPhoneNo.Text;
+        string DeliveryDate = txtDeliveryDate.Text;
+        string Error = "";
+        Error = AnSupplier.Valid(SupplierEmail, Address, StockAmount, PhoneNo, DeliveryDate);
+        if (Error == "")
+        {
+            AnSupplier.SupplierEmail = SupplierEmail;
+            AnSupplier.Address = Address;
+            AnSupplier.StockAmount = Convert.ToInt32(StockAmount);
+            AnSupplier.PhoneNo = PhoneNo;
+            AnSupplier.DeliveryDate = Convert.ToDateTime(DeliveryDate);
+
+            Session["AnSupplier"] = AnSupplier;
+            Response.Redirect("SupplierViewer.aspx");
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
     }
 
     protected void btnFind_Click(object sender, EventArgs e)

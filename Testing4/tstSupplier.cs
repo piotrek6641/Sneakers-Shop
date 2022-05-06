@@ -106,7 +106,7 @@ namespace Testing4
             Boolean OK = true;
             Int32 SupplierID = 1;
             Found = AnSupplier.Find(SupplierID);
-            if (AnSupplier.DeliveryDate !=Convert.ToDateTime("01/01/1111"))
+            if (AnSupplier.DeliveryDate != Convert.ToDateTime("01/01/1111"))
             {
                 OK = false;
             }
@@ -198,6 +198,7 @@ namespace Testing4
             string supplierEmail = "";
             Error = AnSupplier.Valid(supplierEmail, address, phoneNo, stockAmount, deliveryDate);
             Assert.AreNotEqual(Error, "");
+
         }
         [TestMethod]
         public void supplierEmailMin()
@@ -207,6 +208,7 @@ namespace Testing4
             string supplierEmail = "a";
             Error = AnSupplier.Valid(supplierEmail, address, phoneNo, stockAmount, deliveryDate);
             Assert.AreEqual(Error, "");
+
         }
         [TestMethod]
         public void supplierEmailMinPlusOne()
@@ -216,6 +218,7 @@ namespace Testing4
             string supplierEmail = "aa";
             Error = AnSupplier.Valid(supplierEmail, address, phoneNo, stockAmount, deliveryDate);
             Assert.AreEqual(Error, "");
+
         }
         [TestMethod]
         public void supplierEmailMaxLessOne()
@@ -226,6 +229,7 @@ namespace Testing4
             supplierEmail = supplierEmail.PadRight(49, 'a');
             Error = AnSupplier.Valid(supplierEmail, address, phoneNo, stockAmount, deliveryDate);
             Assert.AreEqual(Error, "");
+
         }
         [TestMethod]
         public void supplierEmailMax()
@@ -236,6 +240,7 @@ namespace Testing4
             supplierEmail = supplierEmail.PadRight(50, 'a');
             Error = AnSupplier.Valid(supplierEmail, address, phoneNo, stockAmount, deliveryDate);
             Assert.AreEqual(Error, "");
+
         }
         [TestMethod]
         public void supplierEmailMid()
@@ -246,6 +251,7 @@ namespace Testing4
             supplierEmail = supplierEmail.PadRight(25, 'a');
             Error = AnSupplier.Valid(supplierEmail, address, phoneNo, stockAmount, deliveryDate);
             Assert.AreEqual(Error, "");
+
         }
         [TestMethod]
         public void supplierEmailMaxPlusOne()
@@ -412,7 +418,7 @@ namespace Testing4
             Error = AnSupplier.Valid(supplierEmail, address, phoneNo, stockAmount, deliveryDate);
             Assert.AreEqual(Error, "");
         }
-        
+
         [TestMethod]
         public void phoneNoLessOne()
         {
@@ -448,7 +454,7 @@ namespace Testing4
             string phoneNo = "";
             address = address.PadRight(49, 'a');
             Error = AnSupplier.Valid(supplierEmail, address, phoneNo, stockAmount, deliveryDate);
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
         public void phoneNoMax()
@@ -458,18 +464,9 @@ namespace Testing4
             string phoneNo = "";
             address = address.PadRight(50, 'a');
             Error = AnSupplier.Valid(supplierEmail, address, phoneNo, stockAmount, deliveryDate);
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
-        [TestMethod]
-        public void phoneNoLessOne2()
-        {
-            clsSupplier AnSupplier = new clsSupplier();
-            String Error = "";
-            string phoneNo = "";
-            address = address.PadRight(49, 'a');
-            Error = AnSupplier.Valid(supplierEmail, address, phoneNo, stockAmount, deliveryDate);
-            Assert.AreEqual(Error, "");
-        }
+
         [TestMethod]
         public void phoneNoMaxPlusOne()
         {
@@ -488,10 +485,10 @@ namespace Testing4
             string phoneNo = "";
             address = address.PadRight(25, 'a');
             Error = AnSupplier.Valid(supplierEmail, address, phoneNo, stockAmount, deliveryDate);
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
-        
+
 
         [TestMethod]
         public void stockAmountLessOne()
@@ -568,7 +565,32 @@ namespace Testing4
             string stockAmount = "";
             address = address.PadRight(25, 'a');
             Error = AnSupplier.Valid(supplierEmail, address, phoneNo, stockAmount, deliveryDate);
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void instanceOK()
+        {
+            clsSupplierCollection AllSuppliers = new clsSupplierCollection();
+            Assert.IsNotNull(AllSuppliers);
+        }
+        [TestMethod]
+        public void SupplierListOK()
+        {
+            clsSupplierCollection AllSuppliers = new clsSupplierCollection();
+            List<clsSupplier> TestList = new List<clsSupplier>();
+            clsSupplier TestItem = new clsSupplier();
+            TestItem.InStock = true;
+            TestItem.Address = "1 new street";
+            TestItem.PhoneNo = "11111111111";
+            TestItem.StockAmount = "100";
+            TestItem.DeliveryDate = "01/01/1111";
+            TestItem.SupplierEmail = "supply1@gmail.com";
+            TestItem.SupplierID = 1;
+
+            TestList.Add(TestItem);
+            AllSuppliers.SupplyList = TestList;
+            Assert.AreEqual(AllSuppliers.SupplyList, TestList);
+            
         }
     }
 }
