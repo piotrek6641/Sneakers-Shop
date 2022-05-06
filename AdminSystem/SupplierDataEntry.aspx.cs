@@ -20,4 +20,22 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Session["AnSupplier"] = AnSupplier;
         Response.Redirect("SupplierViewer.aspx");
     }
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        clsSupplier AnSupplier = new clsSupplier();
+        int SupplierID;
+        Boolean Found = false;
+        SupplierID = Convert.ToInt32(txtSupplierID.Text);
+        Found = AnSupplier.Find(SupplierID);
+        if (Found == true)
+        {
+            txtAddress.Text = AnSupplier.Address;
+            txtDeliveryDate.Text = AnSupplier.DeliveryDate.ToString();
+            txtPhoneNo.Text = AnSupplier.PhoneNo;
+            txtStockAmount.Text = AnSupplier.StockAmount.ToString();
+            txtSupplierEmail.Text = AnSupplier.SupplierEmail;
+        }
+
+    }
 }

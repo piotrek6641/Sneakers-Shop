@@ -90,7 +90,7 @@ namespace ClassLibrary
         }
         
 
-        public bool Find(int SupplierID)
+        public bool Find(Int32 SupplierID)
         {
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@SupplierID", SupplierID);
