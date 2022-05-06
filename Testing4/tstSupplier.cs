@@ -8,12 +8,12 @@ namespace Testing4
     public class tstSupplier
     {
         [TestMethod]
-        public void TestMethod1()
+        public void supplier()
         {
             clsSupplier AnSupplier = new clsSupplier();
             Assert.IsNotNull(AnSupplier);
         }
-
+        [TestMethod]
         public void SupplierIDProperties()
         {
             clsSupplier AnSupplier = new clsSupplier();
@@ -21,7 +21,7 @@ namespace Testing4
             AnSupplier.SupplierID = TestData;
             Assert.AreEqual(AnSupplier.SupplierID, TestData);
         }
-
+        [TestMethod]
         public void InStockProperties()
         {
             clsSupplier AnSupplier = new clsSupplier();
@@ -29,6 +29,7 @@ namespace Testing4
             AnSupplier.InStock = TestData;
             Assert.AreEqual(AnSupplier.InStock, TestData);
         }
+        [TestMethod]
         public void DeliveryDateProperties()
         {
             clsSupplier AnSupplier = new clsSupplier();
@@ -36,7 +37,7 @@ namespace Testing4
             AnSupplier.DeliveryDate = TestData;
             Assert.AreEqual(AnSupplier.DeliveryDate, TestData);
         }
-
+        [TestMethod]
         public void SupplierEmailProperties()
         {
             clsSupplier AnSupplier = new clsSupplier();
@@ -44,7 +45,7 @@ namespace Testing4
             AnSupplier.SupplierEmail = TestData;
             Assert.AreEqual(AnSupplier.SupplierEmail, TestData);
         }
-
+        [TestMethod]
         public void AddressProperties()
         {
             clsSupplier AnSupplier = new clsSupplier();
@@ -52,7 +53,7 @@ namespace Testing4
             AnSupplier.Address = TestData;
             Assert.AreEqual(AnSupplier.Address, TestData);
         }
-
+        [TestMethod]
         public void PhoneNoProperties()
         {
             clsSupplier AnSupplier = new clsSupplier();
@@ -60,13 +61,36 @@ namespace Testing4
             AnSupplier.PhoneNo = TestData;
             Assert.AreEqual(AnSupplier.PhoneNo, TestData);
         }
-
+        [TestMethod]
         public void StockAmountProperties()
         {
             clsSupplier AnSupplier = new clsSupplier();
             Int32 TestData = 500;
             AnSupplier.StockAmount = TestData;
             Assert.AreEqual(AnSupplier.StockAmount, TestData);
+        }
+        [TestMethod]
+        public void FindMethod()
+        {
+            clsSupplier AnSupplier = new clsSupplier();
+            Boolean Found = false;
+            Int32 SupplierID = 21;
+        Found = AnSupplier.Find(SupplierID);
+            Assert.IsTrue(Found);
+        }
+        [TestMethod]
+        public void TestSupplierNoFound()
+        {
+            clsSupplier AnSupplier = new clsSupplier();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 SupplierID = 21;
+            Found = AnSupplier.Find(SupplierID);
+            if (AnSupplier.SupplierID != 21)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
         }
 
     }
