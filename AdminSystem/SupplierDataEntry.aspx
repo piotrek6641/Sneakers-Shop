@@ -12,6 +12,8 @@
             <asp:Label ID="lblSupplierID" runat="server" Text="Supplier ID" width="87px"></asp:Label>
 &nbsp;
             <asp:TextBox ID="txtSupplierID" runat="server"></asp:TextBox>
+            &nbsp;&nbsp;
+            <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Find" />
             <br />
             <asp:Label ID="lblSupplierEmail" runat="server" Text="Supplier Email" width="87px"></asp:Label>
 &nbsp;
