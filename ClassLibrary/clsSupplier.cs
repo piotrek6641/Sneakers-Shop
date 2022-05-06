@@ -92,14 +92,24 @@ namespace ClassLibrary
 
         public bool Find(int SupplierID)
         {
-            tSupplierID = 21;
-            tInStock = true;
-            tDeliveryDate = Convert.ToDateTime("31/10/2001");
-            tSupplierEmail = "supply@gmail.com";
-            tAddress = "6 new street";
-            tPhoneNo = "07780367982";
-            tStockAmount = 500;
-            return true;
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@SupplierID", SupplierID);
+            DB.Execute("sproc_tblSupplier_FilterBySupplierID");
+            if (DB.Count == 1)
+            {
+                tSupplierID = Convert.ToInt32(DB.DataTable.Rows[0]["SupplierID"]);
+                tSupplierEmail = Convert.ToString(DB.DataTable.Rows[0]["SupplierEmail"]);
+                tAddress = Convert.ToString(DB.DataTable.Rows[0]["Address"]);
+                tPhoneNo = Convert.ToString(DB.DataTable.Rows[0]["PhoneNo"]);
+                tStockAmount = Convert.ToInt32(DB.DataTable.Rows[0]["StockAmount"]);
+                tInStock = Convert.ToBoolean(DB.DataTable.Rows[0]["InStock"]);
+                tDeliveryDate = Convert.ToDateTime(DB.DataTable.Rows[0]["DeliveryDate"]);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

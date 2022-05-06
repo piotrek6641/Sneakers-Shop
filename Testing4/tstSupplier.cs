@@ -74,7 +74,7 @@ namespace Testing4
         {
             clsSupplier AnSupplier = new clsSupplier();
             Boolean Found = false;
-            Int32 SupplierID = 21;
+            Int32 SupplierID = 1;
             Found = AnSupplier.Find(SupplierID);
             Assert.IsTrue(Found);
         }
@@ -84,9 +84,9 @@ namespace Testing4
             clsSupplier AnSupplier = new clsSupplier();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 SupplierID = 21;
+            Int32 SupplierID = 1;
             Found = AnSupplier.Find(SupplierID);
-            if (AnSupplier.SupplierID != 21)
+            if (AnSupplier.SupplierID != 1)
             {
                 OK = false;
             }
@@ -98,9 +98,9 @@ namespace Testing4
             clsSupplier AnSupplier = new clsSupplier();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 SupplierID = 21;
+            Int32 SupplierID = 1;
             Found = AnSupplier.Find(SupplierID);
-            if (AnSupplier.DeliveryDate !=Convert.ToDateTime("31/10/2001"))
+            if (AnSupplier.DeliveryDate !=Convert.ToDateTime("01/01/1111"))
             {
                 OK = false;
             }
@@ -112,7 +112,7 @@ namespace Testing4
             clsSupplier AnSupplier = new clsSupplier();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 SupplierID = 21;
+            Int32 SupplierID = 1;
             Found = AnSupplier.Find(SupplierID);
             if (AnSupplier.InStock != true)
             {
@@ -126,9 +126,9 @@ namespace Testing4
             clsSupplier AnSupplier = new clsSupplier();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 SupplierID = 21;
+            Int32 SupplierID = 1;
             Found = AnSupplier.Find(SupplierID);
-            if (AnSupplier.SupplierEmail != "supply@gmail.com")
+            if (AnSupplier.SupplierEmail != "supply1@gmail.com")
             {
                 OK = false;
             }
@@ -140,9 +140,9 @@ namespace Testing4
             clsSupplier AnSupplier = new clsSupplier();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 SupplierID = 21;
+            Int32 SupplierID = 1;
             Found = AnSupplier.Find(SupplierID);
-            if (AnSupplier.Address != "6 new street")
+            if (AnSupplier.Address != "1 new street")
             {
                 OK = false;
             }
@@ -154,9 +154,9 @@ namespace Testing4
             clsSupplier AnSupplier = new clsSupplier();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 SupplierID = 21;
+            Int32 SupplierID = 1;
             Found = AnSupplier.Find(SupplierID);
-            if (AnSupplier.PhoneNo != "07780367982")
+            if (AnSupplier.PhoneNo != "11111111111")
             {
                 OK = false;
             }
@@ -168,9 +168,9 @@ namespace Testing4
             clsSupplier AnSupplier = new clsSupplier();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 SupplierID = 21;
+            Int32 SupplierID = 1;
             Found = AnSupplier.Find(SupplierID);
-            if (AnSupplier.StockAmount != 500)
+            if (AnSupplier.StockAmount != 100)
             {
                 OK = false;
             }
