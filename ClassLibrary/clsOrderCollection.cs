@@ -107,6 +107,7 @@ namespace ClassLibrary
             PopulateArray(DB);
         }
 
+
         void PopulateArray(clsDataConnection DB)
         {
             //var for the index
