@@ -1,17 +1,18 @@
 ﻿using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
 
 namespace Testing4
 {
     [TestClass]
     public class tstSupplier
     {
-        string supplierEmail = "supply1@gmail.com";
-        string address = "1 new street";
-        string phoneNo = "11111111111";
-        string stockAmount = "100";
-        string deliveryDate = "01/01/1111";
+        string SupplierEmail = "supply1@gmail.com";
+        string Address = "1 new street";
+        string PhoneNo = "11111111111";
+        string StockAmount = "100";
+        string DeliveryDate = DateTime.Now.Date.ToString();
 
         [TestMethod]
         public void supplier()
@@ -187,7 +188,7 @@ namespace Testing4
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            Error = AnSupplier.Valid(supplierEmail, address, phoneNo, stockAmount, deliveryDate);
+            Error = AnSupplier.Valid(SupplierEmail, Address, PhoneNo, StockAmount, DeliveryDate);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
@@ -195,8 +196,8 @@ namespace Testing4
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            string supplierEmail = "";
-            Error = AnSupplier.Valid(supplierEmail, address, phoneNo, stockAmount, deliveryDate);
+            string SupplierEmail = "";
+            Error = AnSupplier.Valid(SupplierEmail, Address, PhoneNo, StockAmount, DeliveryDate);
             Assert.AreNotEqual(Error, "");
 
         }
@@ -205,8 +206,8 @@ namespace Testing4
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            string supplierEmail = "a";
-            Error = AnSupplier.Valid(supplierEmail, address, phoneNo, stockAmount, deliveryDate);
+            string SupplierEmail = "a";
+            Error = AnSupplier.Valid(SupplierEmail, Address, PhoneNo, StockAmount, DeliveryDate);
             Assert.AreEqual(Error, "");
 
         }
@@ -215,8 +216,8 @@ namespace Testing4
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            string supplierEmail = "aa";
-            Error = AnSupplier.Valid(supplierEmail, address, phoneNo, stockAmount, deliveryDate);
+            string SupplierEmail = "aa";
+            Error = AnSupplier.Valid(SupplierEmail, Address, PhoneNo, StockAmount, DeliveryDate);
             Assert.AreEqual(Error, "");
 
         }
@@ -225,9 +226,9 @@ namespace Testing4
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            string supplierEmail = "";
-            supplierEmail = supplierEmail.PadRight(49, 'a');
-            Error = AnSupplier.Valid(supplierEmail, address, phoneNo, stockAmount, deliveryDate);
+            string SupplierEmail = "";
+            SupplierEmail = SupplierEmail.PadRight(49, 'a');
+            Error = AnSupplier.Valid(SupplierEmail, Address, PhoneNo, StockAmount, DeliveryDate);
             Assert.AreEqual(Error, "");
 
         }
@@ -236,9 +237,9 @@ namespace Testing4
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            string supplierEmail = "";
-            supplierEmail = supplierEmail.PadRight(50, 'a');
-            Error = AnSupplier.Valid(supplierEmail, address, phoneNo, stockAmount, deliveryDate);
+            string SupplierEmail = "";
+            SupplierEmail = SupplierEmail.PadRight(50, 'a');
+            Error = AnSupplier.Valid(SupplierEmail, Address, PhoneNo, StockAmount, DeliveryDate);
             Assert.AreEqual(Error, "");
 
         }
@@ -247,9 +248,9 @@ namespace Testing4
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            string supplierEmail = "";
-            supplierEmail = supplierEmail.PadRight(25, 'a');
-            Error = AnSupplier.Valid(supplierEmail, address, phoneNo, stockAmount, deliveryDate);
+            string SupplierEmail = "";
+            SupplierEmail = SupplierEmail.PadRight(25, 'a');
+            Error = AnSupplier.Valid(SupplierEmail, Address, PhoneNo, StockAmount, DeliveryDate);
             Assert.AreEqual(Error, "");
 
         }
@@ -258,9 +259,9 @@ namespace Testing4
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            string supplierEmail = "";
-            supplierEmail = supplierEmail.PadRight(51, 'a');
-            Error = AnSupplier.Valid(supplierEmail, address, phoneNo, stockAmount, deliveryDate);
+            string SupplierEmail = "";
+            SupplierEmail = SupplierEmail.PadRight(51, 'a');
+            Error = AnSupplier.Valid(SupplierEmail, Address, PhoneNo, StockAmount, DeliveryDate);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
@@ -268,9 +269,9 @@ namespace Testing4
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            string supplierEmail = "";
-            supplierEmail = supplierEmail.PadRight(500, 'a');
-            Error = AnSupplier.Valid(supplierEmail, address, phoneNo, stockAmount, deliveryDate);
+            string SupplierEmail = "";
+            SupplierEmail = SupplierEmail.PadRight(500, 'a');
+            Error = AnSupplier.Valid(SupplierEmail, Address, PhoneNo, StockAmount, DeliveryDate);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
@@ -281,8 +282,8 @@ namespace Testing4
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddYears(-100);
-            string deliveryDate = TestDate.ToString();
-            Error = AnSupplier.Valid(supplierEmail, address, phoneNo, stockAmount, deliveryDate);
+            string DeliveryDate = TestDate.ToString();
+            Error = AnSupplier.Valid(SupplierEmail, Address, PhoneNo, StockAmount, DeliveryDate);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
@@ -293,8 +294,8 @@ namespace Testing4
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddDays(-1);
-            string deliveryDate = TestDate.ToString();
-            Error = AnSupplier.Valid(supplierEmail, address, phoneNo, stockAmount, deliveryDate);
+            string DeliveryDate = TestDate.ToString();
+            Error = AnSupplier.Valid(SupplierEmail, Address, PhoneNo, StockAmount, DeliveryDate);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
@@ -304,8 +305,8 @@ namespace Testing4
             String Error = "";
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
-            string deliveryDate = TestDate.ToString();
-            Error = AnSupplier.Valid(supplierEmail, address, phoneNo, stockAmount, deliveryDate);
+            string DeliveryDate = TestDate.ToString();
+            Error = AnSupplier.Valid(SupplierEmail, Address, PhoneNo, StockAmount, DeliveryDate);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
@@ -316,8 +317,8 @@ namespace Testing4
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddDays(1);
-            string deliveryDate = TestDate.ToString();
-            Error = AnSupplier.Valid(supplierEmail, address, phoneNo, stockAmount, deliveryDate);
+            string DeliveryDate = TestDate.ToString();
+            Error = AnSupplier.Valid(SupplierEmail, Address, PhoneNo, StockAmount, DeliveryDate);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
@@ -328,8 +329,8 @@ namespace Testing4
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddYears(100);
-            string deliveryDate = TestDate.ToString();
-            Error = AnSupplier.Valid(supplierEmail, address, phoneNo, stockAmount, deliveryDate);
+            string DeliveryDate = TestDate.ToString();
+            Error = AnSupplier.Valid(SupplierEmail, Address, PhoneNo, StockAmount, DeliveryDate);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
@@ -337,8 +338,8 @@ namespace Testing4
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            string deliveryDate = "this is not a date";
-            Error = AnSupplier.Valid(supplierEmail, address, phoneNo, stockAmount, deliveryDate);
+            string DeliveryDate = "this is not a date";
+            Error = AnSupplier.Valid(SupplierEmail, Address, PhoneNo, StockAmount, DeliveryDate);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
@@ -346,8 +347,8 @@ namespace Testing4
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            string address = "";
-            Error = AnSupplier.Valid(supplierEmail, address, phoneNo, stockAmount, deliveryDate);
+            string Address = "";
+            Error = AnSupplier.Valid(SupplierEmail, Address, PhoneNo, StockAmount, DeliveryDate);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
@@ -355,8 +356,8 @@ namespace Testing4
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            string address = "a";
-            Error = AnSupplier.Valid(supplierEmail, address, phoneNo, stockAmount, deliveryDate);
+            string Address = "a";
+            Error = AnSupplier.Valid(SupplierEmail, Address, PhoneNo, StockAmount, DeliveryDate);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
@@ -364,8 +365,8 @@ namespace Testing4
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            string address = "aa";
-            Error = AnSupplier.Valid(supplierEmail, address, phoneNo, stockAmount, deliveryDate);
+            string Address = "aa";
+            Error = AnSupplier.Valid(SupplierEmail, Address, PhoneNo, StockAmount, DeliveryDate);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
@@ -373,9 +374,9 @@ namespace Testing4
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            string address = "";
-            address = address.PadRight(49, 'a');
-            Error = AnSupplier.Valid(supplierEmail, address, phoneNo, stockAmount, deliveryDate);
+            string Address = "";
+            Address = Address.PadRight(49, 'a');
+            Error = AnSupplier.Valid(SupplierEmail, Address, PhoneNo, StockAmount, DeliveryDate);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
@@ -383,29 +384,19 @@ namespace Testing4
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            string address = "";
-            address = address.PadRight(50, 'a');
-            Error = AnSupplier.Valid(supplierEmail, address, phoneNo, stockAmount, deliveryDate);
+            string Address = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+            Error = AnSupplier.Valid(SupplierEmail, Address, PhoneNo, StockAmount, DeliveryDate);
             Assert.AreEqual(Error, "");
         }
-        [TestMethod]
-        public void addressMaxLessOne2()
-        {
-            clsSupplier AnSupplier = new clsSupplier();
-            String Error = "";
-            string address = "";
-            address = address.PadRight(49, 'a');
-            Error = AnSupplier.Valid(supplierEmail, address, phoneNo, stockAmount, deliveryDate);
-            Assert.AreEqual(Error, "");
-        }
+        
         [TestMethod]
         public void addressMaxPlusOne()
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            string address = "";
-            address = address.PadRight(51, 'a');
-            Error = AnSupplier.Valid(supplierEmail, address, phoneNo, stockAmount, deliveryDate);
+            string Address = "";
+            Address = Address.PadRight(51, 'a');
+            Error = AnSupplier.Valid(SupplierEmail, Address, PhoneNo, StockAmount, DeliveryDate);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
@@ -413,9 +404,9 @@ namespace Testing4
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            string address = "";
-            address = address.PadRight(25, 'a');
-            Error = AnSupplier.Valid(supplierEmail, address, phoneNo, stockAmount, deliveryDate);
+            string Address = "";
+            Address = Address.PadRight(25, 'a');
+            Error = AnSupplier.Valid(SupplierEmail, Address, PhoneNo, StockAmount, DeliveryDate);
             Assert.AreEqual(Error, "");
         }
 
@@ -424,8 +415,8 @@ namespace Testing4
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            string phoneNo = "";
-            Error = AnSupplier.Valid(supplierEmail, address, phoneNo, stockAmount, deliveryDate);
+            string PhoneNo = "";
+            Error = AnSupplier.Valid(SupplierEmail, Address, PhoneNo, StockAmount, DeliveryDate);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
@@ -433,8 +424,8 @@ namespace Testing4
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            string phoneNo = "a";
-            Error = AnSupplier.Valid(supplierEmail, address, phoneNo, stockAmount, deliveryDate);
+            string PhoneNo = "a";
+            Error = AnSupplier.Valid(SupplierEmail, Address, PhoneNo, StockAmount, DeliveryDate);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
@@ -442,8 +433,8 @@ namespace Testing4
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            string phoneNo = "aa";
-            Error = AnSupplier.Valid(supplierEmail, address, phoneNo, stockAmount, deliveryDate);
+            string PhoneNo = "aa";
+            Error = AnSupplier.Valid(SupplierEmail, Address, PhoneNo, StockAmount, DeliveryDate);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
@@ -451,20 +442,20 @@ namespace Testing4
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            string phoneNo = "";
-            address = address.PadRight(49, 'a');
-            Error = AnSupplier.Valid(supplierEmail, address, phoneNo, stockAmount, deliveryDate);
-            Assert.AreNotEqual(Error, "");
+            string PhoneNo = "";
+            PhoneNo = PhoneNo.PadRight(49, 'a');
+            Error = AnSupplier.Valid(SupplierEmail, Address, PhoneNo, StockAmount, DeliveryDate);
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void phoneNoMax()
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            string phoneNo = "";
-            address = address.PadRight(50, 'a');
-            Error = AnSupplier.Valid(supplierEmail, address, phoneNo, stockAmount, deliveryDate);
-            Assert.AreNotEqual(Error, "");
+            string PhoneNo = "";
+            PhoneNo = PhoneNo.PadRight(50, 'a');
+            Error = AnSupplier.Valid(SupplierEmail, Address, PhoneNo, StockAmount, DeliveryDate);
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -472,9 +463,9 @@ namespace Testing4
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            string phoneNo = "";
-            address = address.PadRight(51, 'a');
-            Error = AnSupplier.Valid(supplierEmail, address, phoneNo, stockAmount, deliveryDate);
+            string PhoneNo = "";
+            PhoneNo = PhoneNo.PadRight(51, 'a');
+            Error = AnSupplier.Valid(SupplierEmail, Address, PhoneNo, StockAmount, DeliveryDate);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
@@ -482,10 +473,10 @@ namespace Testing4
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            string phoneNo = "";
-            address = address.PadRight(25, 'a');
-            Error = AnSupplier.Valid(supplierEmail, address, phoneNo, stockAmount, deliveryDate);
-            Assert.AreNotEqual(Error, "");
+            string PhoneNo = "";
+            PhoneNo = PhoneNo.PadRight(25, 'a');
+            Error = AnSupplier.Valid(SupplierEmail, Address, PhoneNo, StockAmount, DeliveryDate);
+            Assert.AreEqual(Error, "");
         }
 
 
@@ -495,8 +486,8 @@ namespace Testing4
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            string stockAmount = "";
-            Error = AnSupplier.Valid(supplierEmail, address, phoneNo, stockAmount, deliveryDate);
+            string StockAmount = "";
+            Error = AnSupplier.Valid(SupplierEmail, Address, PhoneNo, StockAmount, DeliveryDate);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
@@ -504,8 +495,8 @@ namespace Testing4
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            string stockAmount = "a";
-            Error = AnSupplier.Valid(supplierEmail, address, phoneNo, stockAmount, deliveryDate);
+            string StockAmount = "a";
+            Error = AnSupplier.Valid(SupplierEmail, Address, PhoneNo, StockAmount, DeliveryDate);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
@@ -513,8 +504,8 @@ namespace Testing4
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            string stockAmount = "aa";
-            Error = AnSupplier.Valid(supplierEmail, address, phoneNo, stockAmount, deliveryDate);
+            string StockAmount = "aa";
+            Error = AnSupplier.Valid(SupplierEmail, Address, PhoneNo, StockAmount, DeliveryDate);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
@@ -522,9 +513,9 @@ namespace Testing4
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            string stockAmount = "";
-            address = address.PadRight(49, 'a');
-            Error = AnSupplier.Valid(supplierEmail, address, phoneNo, stockAmount, deliveryDate);
+            string StockAmount = "";
+            StockAmount = StockAmount.PadRight(49, 'a');
+            Error = AnSupplier.Valid(SupplierEmail, Address, PhoneNo, StockAmount, DeliveryDate);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
@@ -532,29 +523,20 @@ namespace Testing4
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            string stockAmount = "";
-            address = address.PadRight(50, 'a');
-            Error = AnSupplier.Valid(supplierEmail, address, phoneNo, stockAmount, deliveryDate);
+            string StockAmount = "";
+            StockAmount = StockAmount.PadRight(50, 'a');
+            Error = AnSupplier.Valid(SupplierEmail, Address, PhoneNo, StockAmount, DeliveryDate);
             Assert.AreEqual(Error, "");
         }
-        [TestMethod]
-        public void stockAmountLessOne2()
-        {
-            clsSupplier AnSupplier = new clsSupplier();
-            String Error = "";
-            string stockAmount = "";
-            address = address.PadRight(49, 'a');
-            Error = AnSupplier.Valid(supplierEmail, address, phoneNo, stockAmount, deliveryDate);
-            Assert.AreEqual(Error, "");
-        }
+        
         [TestMethod]
         public void stockAmountMaxPlusOne()
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            string stockAmount = "";
-            address = address.PadRight(51, 'a');
-            Error = AnSupplier.Valid(supplierEmail, address, phoneNo, stockAmount, deliveryDate);
+            string StockAmount = "";
+            StockAmount = StockAmount.PadRight(51, 'a');
+            Error = AnSupplier.Valid(SupplierEmail, Address, PhoneNo, StockAmount, DeliveryDate);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
@@ -562,35 +544,12 @@ namespace Testing4
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            string stockAmount = "";
-            address = address.PadRight(25, 'a');
-            Error = AnSupplier.Valid(supplierEmail, address, phoneNo, stockAmount, deliveryDate);
-            Assert.AreNotEqual(Error, "");
+            string StockAmount = "";
+            StockAmount = StockAmount.PadRight(25, 'a');
+            Error = AnSupplier.Valid(SupplierEmail, Address, PhoneNo, StockAmount, DeliveryDate);
+            Assert.AreEqual(Error, "");
         }
-        [TestMethod]
-        public void instanceOK()
-        {
-            clsSupplierCollection AllSuppliers = new clsSupplierCollection();
-            Assert.IsNotNull(AllSuppliers);
-        }
-        [TestMethod]
-        public void SupplierListOK()
-        {
-            clsSupplierCollection AllSuppliers = new clsSupplierCollection();
-            List<clsSupplier> TestList = new List<clsSupplier>();
-            clsSupplier TestItem = new clsSupplier();
-            TestItem.InStock = true;
-            TestItem.Address = "1 new street";
-            TestItem.PhoneNo = "11111111111";
-            TestItem.StockAmount = "100";
-            TestItem.DeliveryDate = "01/01/1111";
-            TestItem.SupplierEmail = "supply1@gmail.com";
-            TestItem.SupplierID = 1;
-
-            TestList.Add(TestItem);
-            AllSuppliers.SupplyList = TestList;
-            Assert.AreEqual(AllSuppliers.SupplyList, TestList);
-            
-        }
+        
+        
     }
 }
