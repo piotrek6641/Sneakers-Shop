@@ -117,6 +117,7 @@ namespace ClassLibrary
         {
             String Error = "";
             DateTime DateTemp;
+
             if (supplierEmail.Length == 0)
             {
                 Error = Error + "The email may not be blank : ";
@@ -126,30 +127,48 @@ namespace ClassLibrary
                 Error = Error + "The email must not have more than 50 characters : ";
             }
             if (address.Length == 0)
-                        {
-                            Error = Error + "The address may not be blank : ";
-                        }
-                        if (address.Length > 50)
-                        {
-                            Error = Error + "The address must be less than 9 characters : ";
-                        }
-                        if (phoneNo.Length == 0)
-                        {
-                            Error = Error + "The phoneNo may not be blank : ";
-                        }
-                        if (phoneNo.Length > 50)
-                        {
-                            Error = Error + "The phoneNo must be less than 50 characters : ";
-                        }
-                        if (stockAmount.Length == 0)
-                        {
-                            Error = Error + "The stock amount may not be blank : ";
-                        }
-                        if (stockAmount.Length > 50)
-                        {
-                            Error = Error + "The stock amount must be less than 50 characters : ";
-                        }
-           
+            {
+                Error = Error + "The Address may not be blank : ";
+            }
+            if (address.Length > 50)
+            {
+                Error = Error + "the address must be less than 50 characters : ";
+            }
+            if (phoneNo.Length == 0)
+            {
+                Error = Error + "the phone number may not be blank : ";
+            }
+            if (phoneNo.Length > 50)
+            {
+                Error = Error + "the phone number must be less than 50 characters : ";
+            }
+            if (stockAmount.Length == 0)
+            {
+                Error = Error + "the stock amount may not be 0 : ";
+            }
+            if (stockAmount.Length > 50)
+            {
+                Error = Error + "the stock amount may not be more than 50 characters : ";
+            }
+            try
+            {
+                
+                DateTemp = Convert.ToDateTime(deliveryDate);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the past : ";
+                }
+
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                Error = Error + "The data was not a valid date : ";
+            }
+
             return Error;
         }
     }
