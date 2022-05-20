@@ -8,11 +8,34 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 SupplierID;
     protected void Page_Load(object sender, EventArgs e)
     {
+        SupplierID = Convert.ToInt32(Session["SupplierID"]);
+        if(IsPostBack == false)
+        {
+            if(SupplierID != -1)
+            {
+                DisplayAddress();
+            }
+        }
 
     }
 
+    private void DisplayAddress()
+    {
+        clsSupplierCollection SupplierBook = new clsSupplierCollection();
+
+        SupplierBook.ThisSupplier.Find(SupplierID);
+
+        txtSupplierID.Text = SupplierBook.ThisSupplier.SupplierID.ToString();
+        txtSupplierEmail.Text = SupplierBook.ThisSupplier.SupplierEmail;
+        txtPhoneNo.Text = SupplierBook.ThisSupplier.PhoneNo;
+        txtAddress.Text = SupplierBook.ThisSupplier.Address;
+        txtStockAmount.Text = SupplierBook.ThisSupplier.StockAmount.ToString();
+        txtDeliveryDate.Text = SupplierBook.ThisSupplier.DeliveryDate.ToString();
+        chkInstock.Checked = SupplierBook.ThisSupplier.InStock;
+    }
 
     protected void btnFind_Click(object sender, EventArgs e)
     {
@@ -49,6 +72,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = AnSupplier.Valid(SupplierEmail, Address, StockAmount, PhoneNo, DeliveryDate);
         if (Error == "")
         {
+            AnSupplier.SupplierID = SupplierID;
 
             AnSupplier.SupplierEmail = SupplierEmail;
             AnSupplier.Address = Address;
@@ -59,8 +83,18 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnSupplier.InStock = chkInstock.Checked;
 
             clsSupplierCollection SupplierList = new clsSupplierCollection();
-            SupplierList.ThisSupplier = AnSupplier;
-            SupplierList.Add();
+            
+            if(SupplierID == -1)
+            {
+                SupplierList.ThisSupplier = AnSupplier;
+                SupplierList.Add();
+            }
+            else
+            {
+                SupplierList.ThisSupplier.Find(SupplierID);
+                SupplierList.ThisSupplier = AnSupplier;
+                SupplierList.Update();
+            }
             Response.Redirect("SupplierList.aspx");
         }
         else
