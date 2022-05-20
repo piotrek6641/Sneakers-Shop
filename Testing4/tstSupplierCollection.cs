@@ -1,7 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using ClassLibrary;
 using System.Collections.Generic;
+using ClassLibrary;
+
 
 namespace Testing4
 {
@@ -154,6 +155,51 @@ namespace Testing4
 
 
             Assert.IsFalse(Found);
+        }
+
+        [TestMethod]
+        public void ReportByPhoneNoMethodOK()
+        {
+            clsSupplierCollection AllSupplier = new clsSupplierCollection();
+            clsSupplierCollection FilteredSuppliers = new clsSupplierCollection();
+
+            FilteredSuppliers.ReportByPhoneNo("");
+
+            Assert.AreEqual(AllSupplier.Count, FilteredSuppliers.Count);
+        }
+
+        [TestMethod]
+        public void ReportByPhoneNoNoneFound()
+        {
+            clsSupplierCollection FilteredSuppliers = new clsSupplierCollection();
+
+            FilteredSuppliers.ReportByPhoneNo("456");
+
+            Assert.AreEqual(4, FilteredSuppliers.Count);
+        }
+
+        [TestMethod]
+        public void ReportByPhoneNoTestDataFound()
+        {
+            clsSupplierCollection FilteredSuppliers = new clsSupplierCollection();
+            Boolean OK = true;
+            FilteredSuppliers.ReportByPhoneNo("444");
+            if(FilteredSuppliers.Count == 2)
+            {
+                if(FilteredSuppliers.SupplierList[0].SupplierID != 36)
+                {
+                    OK = false;
+                }
+                if(FilteredSuppliers.SupplierList[1].SupplierID != 37)
+                {
+                    OK = fasle;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
         }
 
 

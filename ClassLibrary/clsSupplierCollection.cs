@@ -43,13 +43,12 @@ namespace ClassLibrary
             }
         }
 
-        public clsSupplierCollection()
+        void PopulateArray(clsDataConnection DB)
         {
             Int32 Index = 0;
             Int32 RecordCount = 0;
-            clsDataConnection DB = new clsDataConnection();
-            DB.Execute("sproc_tblSupplier_SelectAl");
             RecordCount = DB.Count;
+            mSupplierList = new List<clsSupplier>();
             while (Index < RecordCount)
             {
                 clsSupplier AnSupplier = new clsSupplier();
@@ -64,6 +63,13 @@ namespace ClassLibrary
                 mSupplierList.Add(AnSupplier);
                 Index++;
             }
+        }
+
+        public clsSupplierCollection()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.Execute("sproc_tblSupplier_SelectAl");
+            PopulateArray(DB);
         }
 
         public int Add()
@@ -100,6 +106,14 @@ namespace ClassLibrary
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@SupplierID", mThisSupplier.SupplierID);
             DB.Execute("sproc_tblSupplier_Delete");
+        }
+
+        public void ReportByPhoneNo(String PhoneNo)
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@PhoneNo", PhoneNo);
+            DB.Execute("sproc_tblSupplier_FilterByPhoneNo");
+            PopulateArray(DB);
         }
     }
 }
