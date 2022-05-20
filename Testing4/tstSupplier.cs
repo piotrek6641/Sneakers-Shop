@@ -149,10 +149,11 @@ namespace Testing4
             Boolean OK = true;
             Int32 SupplierID = 1;
             Found = AnSupplier.Find(SupplierID);
-            if (AnSupplier.Address != "1 new street")
+            if (AnSupplier.Address != "1 newer street")
             {
                 OK = false;
             }
+           
             Assert.IsTrue(OK);
         }
         [TestMethod]

@@ -183,16 +183,16 @@ namespace Testing4
         {
             clsSupplierCollection FilteredSuppliers = new clsSupplierCollection();
             Boolean OK = true;
-            FilteredSuppliers.ReportByPhoneNo("444");
+            FilteredSuppliers.ReportByPhoneNo("22222222222");
             if(FilteredSuppliers.Count == 2)
             {
-                if(FilteredSuppliers.SupplierList[0].SupplierID != 36)
+                if(FilteredSuppliers.SupplierList[0].SupplierID != 4)
                 {
                     OK = false;
                 }
-                if(FilteredSuppliers.SupplierList[1].SupplierID != 37)
+                if(FilteredSuppliers.SupplierList[1].SupplierID != 3)
                 {
-                    OK = fasle;
+                    OK = false;
                 }
             }
             else
