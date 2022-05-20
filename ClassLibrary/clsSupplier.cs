@@ -143,8 +143,7 @@ namespace ClassLibrary
             {
                 Error = Error + "the phone number must be less than 50 characters : ";
             }
-            try
-            {
+
                 IntTemp = Convert.ToInt32(stockAmount);
                 if (IntTemp < 0)
                 {
@@ -155,11 +154,7 @@ namespace ClassLibrary
                 {
                     Error = Error + "The stock amount cannot be bigger then 100000 : ";
                 }
-            }
-            catch
-            {
-                Error = Error + "The stock amount has to be integer : ";
-            }
+
 
             try
             {

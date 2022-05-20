@@ -64,4 +64,41 @@ public partial class _1_List : System.Web.UI.Page
             lblError.Text = "Please select a record to delete from the list";
         }
     }
+
+   
+
+    
+
+    protected void btnApply_Click(object sender, EventArgs e)
+    {
+        clsSupplierCollection Suppliers = new clsSupplierCollection();
+        Suppliers.ReportByPhoneNo(txtPhoEnt.Text);
+        lstSupplierList.DataSource = Suppliers.SupplierList;
+        lstSupplierList.DataValueField = "SupplierID";
+        lstSupplierList.DataTextField = "PhoneNo";
+        lstSupplierList.DataBind();
+    }
+
+    protected void TextBox1_TextChanged(object sender, EventArgs e)
+    {
+
+    }
+
+
+
+    protected void btnClear_Click(object sender, EventArgs e)
+    {
+        clsSupplierCollection Suppliers = new clsSupplierCollection();
+        Suppliers.ReportByPhoneNo("");
+        txtPhoEnt.Text = "";
+        lstSupplierList.DataSource = Suppliers.SupplierList;
+        lstSupplierList.DataValueField = "SupplierID";
+        lstSupplierList.DataTextField = "PhoneNo";
+        lstSupplierList.DataBind();
+    }
+
+    protected void txtPhoEnt_TextChanged(object sender, EventArgs e)
+    {
+
+    }
 }
