@@ -7,6 +7,7 @@ namespace ClassLibrary
     {
 
         List<clsSupplier> mSupplierList = new List<clsSupplier>();
+        clsSupplier mThisSupplier = new clsSupplier();
 
         public List<clsSupplier> SupplierList
         {
@@ -30,7 +31,17 @@ namespace ClassLibrary
 
             }
         }
-        public clsSupplier ThisSupplier { get; set; }
+        public clsSupplier ThisSupplier
+        {
+            get
+            {
+                return mThisSupplier;
+            }
+            set
+            {
+                mThisSupplier = value;
+            }
+        }
 
         public clsSupplierCollection()
         {
@@ -53,6 +64,20 @@ namespace ClassLibrary
                 mSupplierList.Add(AnSupplier);
                 Index++;
             }
+        }
+
+        public int Add()
+        {
+            clsDataConnection DB = new clsDataConnection();
+
+            DB.AddParameter("@SupplierEmail", mThisSupplier.SupplierEmail);
+            DB.AddParameter("@Address", mThisSupplier.Address);
+            DB.AddParameter("@PhoneNo", mThisSupplier.PhoneNo);
+            DB.AddParameter("@StockAmount", mThisSupplier.StockAmount);
+            DB.AddParameter("@DeliveryDate", mThisSupplier.DeliveryDate);
+            DB.AddParameter("@InStock", mThisSupplier.InStock);
+
+            return DB.Execute("sproc_tblSupplier_Insert");
         }
     }
 }

@@ -56,8 +56,12 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnSupplier.PhoneNo = PhoneNo;
             AnSupplier.DeliveryDate = Convert.ToDateTime(DeliveryDate);
 
-            Session["AnSupplier"] = AnSupplier;
-            Response.Redirect("SupplierViewer.aspx");
+            AnSupplier.InStock = chkInstock.Checked;
+
+            clsSupplierCollection SupplierList = new clsSupplierCollection();
+            SupplierList.ThisSupplier = AnSupplier;
+            SupplierList.Add();
+            Response.Redirect("SupplierList.aspx");
         }
         else
         {
