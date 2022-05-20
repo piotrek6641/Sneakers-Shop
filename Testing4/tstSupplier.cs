@@ -486,7 +486,7 @@ namespace Testing4
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            string StockAmount = "";
+            string StockAmount = "-1";
             Error = AnSupplier.Valid(SupplierEmail, Address, PhoneNo, StockAmount, DeliveryDate);
             Assert.AreNotEqual(Error, "");
         }
@@ -495,7 +495,7 @@ namespace Testing4
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            string StockAmount = "a";
+            string StockAmount = "1";
             Error = AnSupplier.Valid(SupplierEmail, Address, PhoneNo, StockAmount, DeliveryDate);
             Assert.AreEqual(Error, "");
         }
@@ -504,7 +504,7 @@ namespace Testing4
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            string StockAmount = "aa";
+            string StockAmount = "2";
             Error = AnSupplier.Valid(SupplierEmail, Address, PhoneNo, StockAmount, DeliveryDate);
             Assert.AreEqual(Error, "");
         }
@@ -513,8 +513,7 @@ namespace Testing4
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            string StockAmount = "";
-            StockAmount = StockAmount.PadRight(49, 'a');
+            string StockAmount = "99999";
             Error = AnSupplier.Valid(SupplierEmail, Address, PhoneNo, StockAmount, DeliveryDate);
             Assert.AreEqual(Error, "");
         }
@@ -523,8 +522,7 @@ namespace Testing4
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            string StockAmount = "";
-            StockAmount = StockAmount.PadRight(50, 'a');
+            string StockAmount = "100000";
             Error = AnSupplier.Valid(SupplierEmail, Address, PhoneNo, StockAmount, DeliveryDate);
             Assert.AreEqual(Error, "");
         }
@@ -534,8 +532,7 @@ namespace Testing4
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            string StockAmount = "";
-            StockAmount = StockAmount.PadRight(51, 'a');
+            string StockAmount = "100001";
             Error = AnSupplier.Valid(SupplierEmail, Address, PhoneNo, StockAmount, DeliveryDate);
             Assert.AreNotEqual(Error, "");
         }
@@ -544,12 +541,17 @@ namespace Testing4
         {
             clsSupplier AnSupplier = new clsSupplier();
             String Error = "";
-            string StockAmount = "";
-            StockAmount = StockAmount.PadRight(25, 'a');
+            string StockAmount = "50000";
             Error = AnSupplier.Valid(SupplierEmail, Address, PhoneNo, StockAmount, DeliveryDate);
             Assert.AreEqual(Error, "");
         }
         
+        [TestMethod]
+        public void InstanceOK ()
+        {
+            clsSupplierCollection AllSupplier = new clsSupplierCollection();
+            Assert.IsNotNull(AllSupplier);
+        }
         
     }
 }

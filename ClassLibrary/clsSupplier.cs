@@ -117,6 +117,7 @@ namespace ClassLibrary
         {
             String Error = "";
             DateTime DateTemp;
+            Int32 IntTemp;
 
             if (supplierEmail.Length == 0)
             {
@@ -142,14 +143,24 @@ namespace ClassLibrary
             {
                 Error = Error + "the phone number must be less than 50 characters : ";
             }
-            if (stockAmount.Length == 0)
+            try
             {
-                Error = Error + "the stock amount may not be 0 : ";
+                IntTemp = Convert.ToInt32(stockAmount);
+                if (IntTemp < 0)
+                {
+                    Error = Error + "The stock amount cannot be negative : ";
+                }
+
+                if (IntTemp > 100000)
+                {
+                    Error = Error + "The stock amount cannot be bigger then 100000 : ";
+                }
             }
-            if (stockAmount.Length > 50)
+            catch
             {
-                Error = Error + "the stock amount may not be more than 50 characters : ";
+                Error = Error + "The stock amount has to be integer : ";
             }
+
             try
             {
                 
@@ -166,7 +177,7 @@ namespace ClassLibrary
             }
             catch
             {
-                Error = Error + "The data was not a valid date : ";
+                Error = Error + "The date was not a valid date : ";
             }
 
             return Error;
